@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Research</title>
+
+  <!-- Optional: keep these if your site uses them elsewhere -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Research-only stylesheet -->
+  <link rel="stylesheet" href="research.css" />
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Research projects and ongoing work." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Research</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+        <div class="project-grid">
+
+          <article class="project-card">
+            <div class="project-card-inner">
+              <h3>Microwave-Based Imaging for Bladder State Detection</h3>
+
+              <p class="muted" style="margin-top: 6px;">
+                Supervised by <a href="https://www.emtlab.ca/" target="_blank" rel="noopener">Prof. Emily Porter</a>.
+              </p>
+
+              <hr class="divider" />
+
+              <ul>
+                <li>The entire lab is centered around developing microwave-based medical technologies (both for imaging, and for treatment
+                  techniques such as ablation). We like microwave radiation for imaging since it's non-ionizing, very inexpensive,
+                  easy to use, and comfortable for the patient.</li>
+                <li>The project I worked on involved developing a wearable path antenna array that is able to detect the state of the bladder
+                  (is it full or empty). The idea for this was spurred from a charity approaching our lab that deals with children with ASD/IDD
+                  that may experience urinary incontinence. The aim of the antenna device is to let users know when their bladder is full and
+                  they have to use the bathroom (or 'void').</li>
+                <li>Started with one wearable antenna and optimized the dimensions and geometry by assessing the S11 parameter loss.</li>
+                <li>This then slowly built to an antenna array with more complex and realistic computational 3D phantoms of the pelvis,
+                  derived from CT scans of real patients.</li>
+                <li>Also investigated other non-wearable antennas such as a Vivaldi design, which is said to be more directive,
+                  and thus can resolve the signal difference more clearly between full and empty bladders.</li>
+                <li>Read out most recent paper submission to learn more
+                  <a href="../Docs/Paper1.pdf" target="_blank" rel="noopener">here</a>.</li>
+              </ul>
+            </div>
+
+            <div class="card-footer">
+              <span class="label">Dates</span>
+              <span>March 2024 – Present</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card-inner">
+              <h3>Dose Surface Mapping of the Parotid Glands</h3>
+
+              <p class="muted" style="margin-top: 6px;">
+                Supervised by <a href="https://kildealab.com/author/john-kildea/" target="_blank" rel="noopener">Prof. John Kildea</a>.
+              </p>
+
+              <hr class="divider" />
+
+              <ul>
+                <li>This a project I recently started for my undergraduate thesis. The motivation comes from the fact that patients who undergo offline
+                  adaptive radiation therapy to treat cancer of the head and neck can often experience side effects. One of which is a loss of function
+                  of parotid glands, the structure responsible for producing saliva, in a condition known as xerostomia or dry mouth.</li>
+                <li>We want to develop a predictive dose surface mapping software, in that we can visualize exactly where the radiation dose goes in the
+                  parotid gland during treatment. The dose surface maps is meant to produce a 2D image over the structure of interest after it has been
+                  “flattened out”.</li>
+                <li>For the parotid glands, we aim to look at dose surface maps for concentric spherical shells (like an onion) after they have flattened
+                  (distortion is inevitable, but we can also quarter the parotids as well).</li>
+                <li>Work on this project is still in early stages, but now I am testing on very simple spherical computational phantoms that I made myself
+                  (with fake dose information also given by me). We will soon move to more anatomically accurate models.</li>
+              </ul>
+            </div>
+
+            <div class="card-footer">
+              <span class="label">Dates</span>
+              <span>Sept. 2025 – Present</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  </main>
+</body>
+</html>

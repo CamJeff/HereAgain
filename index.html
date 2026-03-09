@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cam Jeffery | Website</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cam Jeffery | Website" />
+    <meta property="og:description" content="Research, notes, and puzzles." />
+    <meta property="og:url" content="https://danicax.github.io/" />
+    <meta property="og:site_name" content="Cam Jeffery | Website" />
+    <meta name="author" content="Cam Jeffery" />
+    <meta name="description" content="A clean personal hub for research, notes, and puzzles." />
+    <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+    <main>
+        <section id="intro" class="hero full-height">
+            <div class="overlay"></div>
+            <canvas id="dot-sea" aria-hidden="true"></canvas>
+            <div class="container hero-inner">
+                <div class="caption">
+                    <h1>Hi, I'm Cam Jeffery</h1>
+                    <h5 class="typing-line">
+                        <span class="typed-text" aria-live="polite"></span><span class="cursor" aria-hidden="true"></span>
+                    </h5>
+                    <p class="hero-copy">
+                        I'm a student at McGill University living in Montr&eacuteal for my MSc in Medical 
+                        Physics. Before that, I got my BSc in Physics with a minor in Mathematics also from McGill 
+                        University. 
+                    </p>
+
+                    <p class="hero-copy">
+                        I was born and grew up in Calgary, Alberta, and also hold UK citizenship. In my free time I like
+                        watching movies, weightlifting, bike riding, solving puzzles, and hanging out with my 
+                        two dogs.
+                    </p>
+                </div>
+
+                <div class="social">
+                    <a href="https://github.com/CamJeff" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                        <button class="icon-btn github">
+                            <i class="fa fa-github"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="content-hub" class="section panel-section buckets-section">
+            <div class="container narrow">
+
+                <div class="bucket-grid">
+                    <a class="content-bucket" href="Research/" aria-label="Go to Research page">
+                        <span class="bucket-kicker">01</span>
+                        <h4>Research</h4>
+                        <p>Stuff I have worked on/working on during the course of 
+                            my education
+                        </p>
+                    </a>
+
+                    <a class="content-bucket" href="Notes/" aria-label="Go to Notes page">
+                        <span class="bucket-kicker">02</span>
+                        <h4>Notes</h4>
+                        <p>Notes from some of my favourite courses/subjects</p>
+                    </a>
+
+                    <a class="content-bucket" href="Puzzles/" aria-label="Go to Puzzles page">
+                        <span class="bucket-kicker">03</span>
+                        <h4>Puzzles</h4>
+                        <p>My approach/solutions to some puzzles</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+    <script src="script.js"></script>
+    <script src="animation.js"></script>
+</body>
+</html>
