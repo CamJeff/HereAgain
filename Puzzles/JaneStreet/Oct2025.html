@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="JS.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>October 2025: Robot Baseball</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                <p>The Artificial Automaton Athletics Association (Quad-A) is at it again, to compete with postseason baseball they are developing a Robot Baseball competition. Games are composed of a series of independent at-bats in which the batter is trying to maximize expected score and the pitcher is trying to minimize expected score.</p>
+
+          <p>An at-bat is a series of pitches with a running count of balls and strikes, both starting at zero. For each pitch, the pitcher decides whether to throw a ball or strike, and the batter decides whether to wait or swing; these decisions are made secretly and simultaneously. The results of these choices are as follows.</p>
+
+          <ul>
+            <li>If the pitcher throws a ball and the batter waits, the count of balls is incremented by $1$.</li>
+            <li>If the pitcher throws a strike and the batter waits, the count of strikes is incremented by $1$.</li>
+            <li>If the pitcher throws a ball and the batter swings, the count of strikes is incremented by $1$.</li>
+            <li>If the pitcher throws a strike and the batter swings, with probability $p$ the batter hits a home run and with probability $1-p$ the count of strikes is incremented by $1$.</li>
+          </ul>
+
+          <p>An at-bat ends when either:</p>
+
+          <ul>
+            <li>The count of balls reaches $4$, in which case the batter receives $1$ point.</li>
+            <li>The count of strikes reaches $3$, in which case the batter receives $0$ points.</li>
+            <li>The batter hits a home run, in which case the batter receives $4$ points.</li>
+          </ul>
+
+          <p>By varying the size of the strike zone, Quad-A can adjust the value $p$, the probability a pitched strike that is swung at results in a home run. They have found that viewers are most excited by at-bats that reach a full count, that is, the at-bats that reach the state of three balls and two strikes. Let $q$ be the probability of at-bats reaching full count; $q$ is dependent on $p$. Assume the batter and pitcher are both using optimal mixed strategies and Quad-A has chosen the $p$ that maximizes $q$. Find this $q$, the maximal probability at-bats reach full count, to ten decimal places.</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://www.janestreet.com/puzzles/robot-baseball-index/" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p>Any ad-bat we are in is described by state $(b,s)$, where $b$ is current ball count, and $s$ is current strike count. We start at $(0,0)$ for the first pitch, and ends when $b=4$ (payoff of $1$), $s=3$ (payoff of $0$), or a home run (payoff of $4$).</p>
+
+            $$\mathcal{P}_{(b,s)}=\text{Expected Payoff from state }(b,s)$$
+
+            <p>And so we can summarize the payoffs of each scenario in matrix form. This is a two player zero-sum game, and so suppose the batter adopts the following strategy: he can wait with probability $y$ or swing with probability $1-y$. Similarly, the pitcher chooses ball with probability $z$, or strikes with probability $1-z$.</p>
+
+            <img src="Pics/Matrix.png" alt="Matrix" class="puzzle-image1_5">
+
+            <p>And thus the batter's expected payoff is simply:</p>
+
+            \begin{align}
+ \mathcal{P}_{(b,s)} & =    z\left[y\mathcal{P}_{(b+1,s)}+(1-y)\mathcal{P}_{(b,s+1)}\right]+(1-z)\left[y\mathcal{P}_{(b,s+1)}+(1-y)\mathcal{P}_{(b,s+1)} + 4p\right] \label{eq:einstein}
+\end{align}
+
+            <p>In game theory, optimal mixed strategies exist for both players  and these strategies should occur at an equilibrium point, since neither player should be able to increase their payoff by unilaterally changing their strategy. The idea is to randomize choices so that the opponent is indifferent between their pure strategies. Let's find the indifference conditions for both the batter and the pitcher:</p>
+
+            <p>$\textbf{Batter:}$ If the batter always waits, his expected payoff is shown below. If the batter always swings, his expected payoff is shown below.</p>
+
+            \begin{align*}
+    \mathbb{E}[\text{Wait}] & = z\mathcal{P}_{(b+1,s)} +(1-z)\mathcal{P}_{(b,s+1)}
+    \\ \mathbb{E}[\text{Swing}] & = z\mathcal{P}_{(b,s+1)}  + (1-z)\left[\mathcal{P}_{(b,s+1)} + 4p\right]
+\end{align*}
+
+            <p>Since the pitcher's goal is to minimize the payoff of the batter, he should select probability $z$ such that the batter can not exploit either pure strategy, and thus the above two expected payoffs are equal. The value of such a $z$ is given as:</p>
+
+            $$z\mathcal{P}_{(b+1,s)} +(1-z)\mathcal{P}_{(b,s+1)}=z\mathcal{P}_{(b,s+1)}  + (1-z)\left[\mathcal{P}_{(b,s+1)} + 4p\right]$$
+
+            <p>Solving for $z$:</p>
+
+            $$z=\frac{\left[\mathcal{P}_{(b,s+1)} + 4p\right]-\mathcal{P}_{(b,s+1)}}{\mathcal{P}_{(b+1,s)}  +\left[\mathcal{P}_{(b,s+1)} + 4p\right]-2\mathcal{P}_{(b,s+1)}}$$
+
+            <p>$\textbf{Pitcher:}$ If the pitcher always selects ball, his expected payoff is shown below. If the pitcher always selects strike, his expected payoff is shown below.</p>
+
+            \begin{align*}
+    \mathbb{E}[\text{Ball}] & = y\mathcal{P}_{(b+1,s)} +(1-y)\mathcal{P}_{(b,s+1)}
+    \\ \mathbb{E}[\text{Strike}] & = y\mathcal{P}_{(b,s+1)}  + (1-y)\left[\mathcal{P}_{(b,s+1)} + 4p\right]
+\end{align*}
+
+            <p>And so the batter chooses a value of $y$ such that these are equal, and we notice we get the same value as we did for $z$, i.e:</p>
+
+            $$y=z=\frac{\left[\mathcal{P}_{(b,s+1)} + 4p\right]-\mathcal{P}_{(b,s+1)}}{\mathcal{P}_{(b+1,s)}  +\left[\mathcal{P}_{(b,s+1)} + 4p\right]-2\mathcal{P}_{(b,s+1)}}$$
+
+            <p>We can plug these values back into Eq. \ref{eq:einstein}, or simply use the value/expected payoff formula for a two-player zero-sum game that I found 
+              <a href="https://www3.nd.edu/~apilking/math10170/information/Lectures/16%20Optimal%20Mixed%20Strategy.pdf">here</a>, and we get:
+            </p>
+
+            \begin{align}\mathcal{P}_{(b,s)}=\frac{\mathcal{P}_{(b+1,s)} \left[\mathcal{P}_{(b,s+1)} + 4p\right]-\left[\mathcal{P}_{(b,s+1)}\right]^2}{\mathcal{P}_{(b+1,s)}+\left[\mathcal{P}_{(b,s+1)} + 4p\right]-2\mathcal{P}_{(b,s+1)}}\label{eq:final}\end{align}
+
+            <p>Is a recursive formula for the expected payoff, with the constraints $\mathcal{P}_{(4,s)}=1$ and $\mathcal{P}_{(b,3)}=0$.</p>
+
+            <p>Now let's define:</p>
+
+            $$\mathcal{Q}_{(b,s)}=\text{Probability of Reaching state }(3,2)\;\text{from state }(i,j)$$
+
+            <p>Under constraints:</p>
+
+            \begin{align*}
+    \mathcal{Q}_{(4,s)}=0 & & \mathcal{Q}_{(b,3)}=0 & & \mathcal{Q}_{(3,2)}=1
+\end{align*}
+
+              <p>And using matrix $M$, we make the following observations:</p>
+
+              <ul>
+                <li>With probability $yz$, the result is a ball added, so next state is $(b+1,s)$</li>
+                <li>With probability $(1-z)(1-y)p$, we have a home run, which will never contribute to getting full count.</li>
+                <li>With probability $1-yz-(1-z)(1-y)p$, the result is a strike added, so next state is $(b,s+1)$. </li>
+              </ul>
+
+                <p>And so:</p>
+
+                $$\mathcal{Q}_{b,s}=yz\mathcal{Q}_{b+1,s}+(1-yz-(1-z)(1-y))\mathcal{Q}_{b,s+1}$$
+
+                <p>And so our goal is to find $q(p)=\mathcal{Q}_{0,0}(p)$. And this is when we'll have to use code</p>
+
+                <p>The recursive equations for $\mathcal{P}_{(b,s)}$ and $\mathcal{Q}_{(b,s)}$ are implemented numerically in Python. 
+For a fixed value of $p$, the function $\texttt{compute_q_for_p(p)}$ computes $\mathcal{P}_{(b,s)}$ and the optimal mixed strategies $y(b,s)$ and $z(b,s)$ for every state $(b,s)$ using the closed-form equilibrium equations for $y$ and $\mathcal{P}_{(b,s)}$ as above. These values are filled backwards from the terminal states $\mathcal{P}_{(4,s)}=1$ and $\mathcal{P}_{(b,3)}=0$ toward the initial state $(0,0)$. Once $\mathcal{P}_{(b,s)}$, $y(b,s)$, and $z(b,s)$ are known, the code computes $\mathcal{Q}_{(b,s)}$ recursively according to
+$$
+\mathcal{Q}_{(b,s)} = y(b,s)z(b,s)\mathcal{Q}_{(b+1,s)} + \big(1 - y(b,s)z(b,s) - (1-z(b,s))(1-y(b,s))p\big)\mathcal{Q}_{(b,s+1)},
+$$
+with boundary conditions $\mathcal{Q}_{(4,s)}=0$, $\mathcal{Q}_{(b,3)}=0$, and $\mathcal{Q}_{(3,2)}=1$. 
+The desired quantity is then $q(p)=\mathcal{Q}_{(0,0)}(p)$. Finally, the function $\texttt{maximize_q()}$ performs a golden-section search over $p\in[0,1]$ to find
+$$
+p^* = \arg\max_{p\in[0,1]} q(p), \qquad q^* = q(p^*),
+$$
+which correspond to the home-run probability and the maximal chance of reaching a full count under optimal play.</p>
+
+
+                <div class="code-cell">
+  <pre><code class="language-python">
+import math
+
+def compute_q_for_p(p):
+    P = [[0.0]*4 for _ in range(5)]
+    y = [[0.0]*3 for _ in range(4)]
+    z = [[0.0]*3 for _ in range(4)]
+
+    # Constraints
+    for j in range(3): P[4][j] = 1.0
+    for i in range(5): P[i][3] = 0.0
+
+    for i in range(3, -1, -1):
+        for j in range(2, -1, -1):
+            a = P[i+1][j]
+            b = P[i][j+1]
+            h = (1.0 - p)*b + p*4.0
+            denom = (a + h - 2.0*b)
+
+            if denom == 0.0:
+                P[i][j] = b
+                y[i][j] = z[i][j] = 0.5
+            else:
+                yij = (h - b) / denom
+                zij = yij
+                pij = (a*h - b*b) / denom
+                y[i][j] = 0.0 if yij < 0.0 else (1.0 if yij > 1.0 else yij)
+                z[i][j] = 0.0 if zij < 0.0 else (1.0 if zij > 1.0 else zij)
+                P[i][j] = pij
+
+    Q = [[0.0]*4 for _ in range(5)]
+    Q[3][2] = 1.0
+
+    for i in range(3, -1, -1):
+        for j in range(2, -1, -1):
+            if i == 3 and j == 2:
+                continue
+            yy = y[i][j]
+            zz = z[i][j]
+            p_ball_wait = zz * yy
+            p_hr = (1.0 - zz) * (1.0 - yy) * p
+            p_strike_inc = 1.0 - p_ball_wait - p_hr
+
+            Q_ball   = 0.0 if i+1 == 4 else Q[i+1][j]
+            Q_strike = 0.0 if j+1 == 3 else Q[i][j+1]
+            Q[i][j] = p_ball_wait * Q_ball + p_strike_inc * Q_strike
+
+    return Q[0][0]
+
+def maximize_q():
+    invphi  = (math.sqrt(5) - 1) / 2
+    invphi2 = (3 - math.sqrt(5)) / 2
+    a, b = 0.0, 1.0
+    c = a + invphi2*(b-a)
+    d = a + invphi*(b-a)
+    qc = compute_q_for_p(c)
+    qd = compute_q_for_p(d)
+
+    for _ in range(60):
+        if qc < qd:
+            a = c
+            c, qc = d, qd
+            d = a + invphi*(b-a)
+            qd = compute_q_for_p(d)
+        else:
+            b = d
+            d, qd = c, qc
+            c = a + invphi2*(b-a)
+            qc = compute_q_for_p(c)
+
+    p_star = 0.5*(a+b)
+    q_star = compute_q_for_p(p_star)
+    return p_star, q_star
+
+if __name__ == "__main__":
+    p_star, q_star = maximize_q()
+    print(f"p = {p_star:.10f}")
+    print(f"q = {q_star:.10f}") 
+  </code></pre>
+</div>
+
+  <p>Which gives:</p>
+
+
+  $$\texttt{p = 0.2269732289}\;\;\;\;\;\text{and}\;\;\;\;\;\boxed{\texttt{q = 0.2959679934}}$$
+
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

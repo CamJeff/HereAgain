@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="../Fiddler/Fiddler.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>July 25, 2025: Can You Sprint to the Finish?</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                
+                <p>Every summer I try to run a cycling-related puzzle to coincide with the Tour de France. This time around, you and a competitor are approaching the finish of a grueling stage of the Tour de Fiddler. One of you will win the stage, the other will come in second. As you approach the finish, each of you will test the feeling of your legs, which will be somewhere between $0$ percent ("I can barely go on!") and $100$ percent ("I can do this all day!"). For the purposes of this puzzle, these values are chosen randomly, uniformly, and independently.</p>
+
+            <p>Immediately after feeling your legs, you and your opponent each have a decision to make. Do you maintain your current pace, or do you sprint to the finish? Among those who sprint for the finish, whoever’s legs are feeling the best will win the stage. But if no one sprints for the finish, everyone has an equal chance of winning the stage. In the Tour de Fiddler, you must each decide independently whether to sprint for the finish based on your legs—you don’t have time to react to your opponent’s decision.</p>
+
+            <p>Normally, teams at the Tour de Fiddler keep their strategy and tactics close to the vest. But earlier today, your opponent’s manager declared on international television that if (and only if) your opponent’s legs were feeling 50 percent or better, they’d sprint for the finish.</p>
+
+            <p>As you are about to test your legs for the final sprint and see how they feel, what are your chances of winning the stage, assuming an optimal strategy?</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://thefiddler.substack.com/p/can-you-sprint-to-the-finish" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p>Let $X\stackrel{\text{iid}}{\sim}\text{Unif}(0,1)$ and $Y\stackrel{\text{iid}}{\sim}\text{Unif}(0,1)$ be the random variables representing the decimal representation of you and your opponent's leg state, respectively. Let $x$ and $y$ be fixed values chosen from $X$ and $Y$. Then each combination of your decisions for sprinting/no sprinting (and our winning probabilities for each combination) are given below. </p>
+
+            <img src="Pics/Table1.png" alt="Table1" class="puzzle-image1_5">
+
+            <p>Let's start with the unknown case where we both sprint. We can say:</p>
+
+            $$\mathbb{P}(X>y)=1-\mathbb{P}(X\leq y)=1-y$$
+
+            <p>Where we made use of the cumulative distribution function for a uniform distribution on $[0,1]$. Since we are in the case where both you and your opponent are sprinting, we must condition on the fact that $Y\geq 0.5$. The conditional probability density function of $Y$ is:</p>
+            
+            $$f_{Y|\text{sprint}}(y)=\frac{f_Y(y)}{\mathbb{P}(Y\geq 0.5)}=\frac{1}{0.5}=2$$
+
+            <p>Where we used the known probability density function for a uniform distribution for $f_Y(y)$. And so averaging on all possible speeds for $y$ (where we assume that our opponent is sprinting) gives us the desired winning probability in this case:</p>
+
+            \begin{align*}
+    \mathbb{P}(\text{Win}\;|\;\text{Both sprint}) & =\int_{0.5}^1 \mathbb{P}(X>y)\times f_{Y|\text{sprint}}(y)dy
+    \\ & =\int_{0.5}^1 (1-y)\times 2dy
+    \\ & = 0.25
+\end{align*}
+
+                <p>So now let's figure out what our winning chances are. If I choose not to sprint, the probability that I win is:</p>
+
+
+                $$\mathbb{P}(\text{Win}\;|\;\text{Never sprint})=0.5(0.5)+0.5(0)=0.25$$
+
+                <p>If I choose to sprint, the chances that I win are:</p>
+
+
+                $$\mathbb{P}(\text{Win}\;|\;\text{Always sprint})=0.5(1)+0.5(0.25)=0.625$$
+
+                <p>Which is true for all possible values of $x$. So it seems like I should always choose to sprint. </p>
+
+                <p>But let's consider another strategy: suppose we only sprint if our leg state is above some threshold value, call it $s\in[0,1]$, i.e we sprint if and only if $x\geq s$. Then we consider two cases:</p>
+
+                <p><b>Case 1:</b> You sprint ($X=x\geq s$). Your opponent can choose not to sprint (with probability $0.5$) in which case you win. If your opponent does sprint, then $Y\geq 0.5$, and so we must find:</p>
+
+
+                $$\mathbb{P}(Y< x\;|\;Y\geq 0.5)=\frac{\mathbb{P}(0.5\leq Y< x)}{\mathbb{P}(Y\geq 0.5)}=\frac{\mathbb{P}(Y\leq x)-\mathbb{P}(Y\leq 0.5)}{\mathbb{P}(Y\geq 0.5)}=\frac{x-0.5}{0.5}=2x-1$$
+
+                <p>In which case, our winning probability is:</p>
+
+                $$\mathbb{P}(\text{Win}\;|\;X=x\;\cap\;\text{We sprint})=0.5(1)+0.5(2x-1)=x$$
+
+                <p><b>Case 2:</b>You do not sprint ($X=x< s$). For this, if we want to win, we must hope our opponent does not sprint. If so, either of us will be equally likely to win. And so:</p>
+
+
+                $$\mathbb{P}(\text{Win}\;|\;X=x\;\cap\;\text{No sprint})=\mathbb{P}(Y< 0.5)\times 0.5=0.25$$
+
+                <p>Now we must integrate over $x$, and we consider two regimes depending on whether our optimal value for $s$ is above or below $0.5$:</p>
+
+                <p><b>Regime 1:</b> $0\leq s\leq 0.5$. Summarizing what we found above is shown in the table below. For the second row, since $x<0.5$, and our opponent only sprints if $y>0.5$, we would lose if he chose to sprint. If he chooses not to sprint (with probability $0.5$), we would win; hence our chance of winning is $0.5$ in that case.</p>
+
+                <img src="Pics/Table2.png" alt="Table2" class="puzzle-image1_5">
+
+                <p>And so we have:</p>
+
+                \begin{align*}
+    \mathbb{P}(\text{Win}) & = \int_0^s 0.25dx+\int_s^{0.5}0.5dx+\int_{0.5}^1 xdx= \frac 58-\frac s4
+\end{align*}
+
+                <p><b>Regime 2:</b> $0.5\leq s\leq 1$. Summarizing the results above, we get:</p>
+
+                <img src="Pics/Table3.png" alt="Table2" class="puzzle-image1_5">
+
+                $$\mathbb{P}(\text{Win})=\int_0^s 0.25dx+\int_s^1xdx=\frac s4+\frac 12-\frac{s^2}{2}$$
+
+
+                <p>So in total:</p>
+
+                $$\mathbb{P}(\text{Win})=\begin{cases}
+    \frac 58-\frac s4 & 0\leq s\leq 0.5
+    \\ \frac s4+\frac 12-\frac{s^2}{2} & 0.5\leq s\leq 1
+\end{cases}$$
+
+                <p>This piecewise function plotted is shown below:</p>
+
+                <img src="Pics/Graph1.png" alt="Graph1" class="puzzle-image1_5">
+
+
+                <p>Notice the our highest chance of winning occurs when $s=0$, and the probability coincides with our previous value of $0.625$. Therefore, we can safely determine that our optimal strategy should be to <b>always</b> sprint no matter how our legs are feeling. Adopting this strategy, our chances of winning is $\boxed{0.625}$.</p>
+
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax for LaTeX rendering -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="JS.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>July 2025: Robot Road Trip</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                <p>Robot cars have a top speed (which they prefer to maintain at all times while driving) that’s a real number randomly drawn uniformly between $1$ and $2$ miles per minute. A two-lane highway for robot cars has a fast lane (with minimum speed $a$) and a slow lane (with maximum speed $a$). When a faster car overtakes a slower car in the same lane, the slower car is required to decelerate to either change lanes (if both cars start in the fast lane) or stop on the shoulder (if both cars start in the slow lane). Robot cars decelerate and accelerate at a constant rate of $1$ mile per minute per minute, timed so the faster, overtaking car doesn’t have to change speed at all, and passing happens instantaneously. If cars rarely meet (so you never have to consider a car meeting more than one other car on its trip, see Mathematical clarification below), and you want to minimize the miles not driven due to passing, what should $a$ be set to, in miles per minute? Give your answer to $10$ decimal places.</p>
+
+                <p>Example car interactions: suppose a is set to $1.2$ miles per minute. If a car with top speed $1.8$ overtakes a car with top speed $1.1$, neither has to slow down because they are in different lanes. If instead the car with top speed $1.8$ overtakes one with top speed $1.7$, the slower car computes the optimal time to start decelerating for $30$ seconds (to reach $1.2$ miles per minute to switch to the other lane) so the faster car instantly passes and the slower car can immediately start accelerating for another $30$ seconds to return to $1.7$ miles per minute. This pass cost $0.25$ miles (how far behind where the slower car would be if it continued at $1.7$ miles per minute).</p>
+
+                <p>If a car with top speed $1.1$ overtakes one with top speed $1.0$ in the slow lane, the slower (slowest!) car must decelerate for a full minute all the way to $0$ to allow the pass, and then accelerate for a full minute to reestablish its speed, losing exactly $1$ mile of distance.</p>
+
+            <p>Assume all car trips are of constant length $N$, starting at arbitrary points and times along an infinitely long highway. This is made more mathematically precise below.</p>
+
+            <p><b>Mathematical clarification:</b> Say car trips arrive at a rate of $z$ car trip beginnings per mile per minute, uniformly across the infinite highway (cars enter and exit their trips at their preferred speed due to on/off ramps), and car trips have a constant length of $N$ miles. Define $f(z,N)$ to be the value of a that minimizes the expected lost distance per car trip due to passing. Find:</p>
+
+            <p>the limit of [the limit of $f(z,N)$ as $z\rightarrow 0^+$] as $N\rightarrow$ infinity.</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://www.janestreet.com/puzzles/robot-road-trip-index/" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+              <p>Kind of a boring math problem tbh. Wasn't very fun or satisfying to solve, but I did it anyway.</p>
+
+            <p>Suppose we examine a one mile strip of highway and take many snapshots of the robot cars driving by. A typical strip will start somewhere on the highway with probability $z\;dt\;dx$, in a tiny strip with dimensions $dt$ (minutes), and $dx$ (miles). </p>
+
+            <p>Once a trip has started, it will last exactly $N$ miles. Traveling at speed $v$, the time spent on the road is $N/v$ minutes. And so, we can say the average number of cars per mile whose preferred speed lies between $v$ and $v+dv$ is:</p>
+
+            $$\rho(v)dv:=\text{(starts per minute per mile)}\times\text{(time they stay)}=z\;dv\times \frac{N}{v}$$
+
+            <p>Let's absorb $zN$ as an arbitrary constant $C$ for now. So we have:</p>
+
+            $$\rho(v)=\frac Cv$$
+
+            <p>Which makes intuitive sense, since slower cars will be seen in more "snapshots" because they will be on the road for longer.</p>
+
+            <p>We know that cars will only interact in the same lane (whether the <b>fast</b> or <b>slow</b>  lane). If we denote the speed of the faster car and the slower car as $v_f$ and $v_s$, respectively, then in the <b>slow lane</b>, they must satisfy $1\leq v_s< v_f\leq a$. In the <b>fast lane</b>, they must satisfy $a< v_s< v_f\leq 2$. </p>
+
+            <p>Any same-lane faster car of speed $v_f$ approaches from behind at the relative speed:</p>
+
+            $$v_f-v_s\;\;\;\text{(miles per minute)}$$
+
+            <p>If cars of fast speed are sprinkled along the road with linear density $\rho(v_f)dv_f$, and cars of slow speed are sprinkled along the road with linear density $\rho(v_s)dv_s,$ then the rate at which those faster cars reach the slower cars is:</p>
+
+            $$\text{overtake rate}=\left(v_f-v_s\right)\rho\left(v_f\right)dv_f\times\rho\left(v_s\right)dv_s $$
+
+            <p>Now let's find expressions for the lost distance for both the slow and fast lane case:</p>
+
+            <p> <b> <u>Fast Lane:</u></b> Let $v_s$ be the speed of the slower car, and $v_f$ be the speed of the faster car. Here, we have $a\leq v_s< v_f\leq 2$. When the slower car has to decelerate and then accelerate, it loses distance compared to if it had maintained its speed. We know the slower car must decelerate from speed $v_s$ to speed $a$ in order to change lanes. So, the distance the slower car travels while decelerating and then accelerating is:</p>
+
+            $$d_{\text{total}}=\underbrace{v_st_{\text{dec}}+\frac 12 (-1)t_{\text{dec}}^2}_{\text{deceleration period}}+\underbrace{at_{\text{acc}}+\frac 12 (1)t_{\text{acc}}^2}_{\text{acceleration period}}$$
+
+            <p>Where $t_{\text{dec}}$ and $t_{\text{acc}}$ are the times for deceleration and acceleration respectively. Since the de/acceleration are of the same magnitudes, $t_{\text{dec}}=t_{\text{acc}}$, and we have:</p>
+
+            $$t_{\text{dec}}=t_{\text{acc}}=v_s-a$$
+
+            <p>And so our total distance becomes:</p>
+
+            $$d_{\text{total}}=v_s^2-a^2$$
+
+            <p>And the distance traveled by the slow car if it had maintained its speed $v_s$ is:</p>
+
+            $$d_{\text{maintained}}=v_2\left(t_{\text{dec}}+t_{\text{acc}}\right)=2v_s\left(v_s-a\right)$$
+
+            <p>And so the lost distance from slowing down/speeding up is:</p>
+
+            $$L_{\text{fast}}=d_{\text{maintained}}-d_{\text{total}}=\left(v_s-a\right)^2$$
+
+            <p><b><u>Slow Lane:</u></b> Here, we have $1\leq v_s< v_f\leq a$. By a similar procedure we find that:</p>
+
+            \begin{align*}
+    d_{\text{total}} & = v_s^2
+    \\ d_{\text{maintained}} & = 2v_s^2
+\end{align*}
+
+            <p>And so we have:</p>
+
+            $$L_{\text{slow}}=v_s^2$$
+
+            <p>So now we can put this all together. The total lost distance between two cars of speed $v_s$ and $v_f$ is simply equal to the lost distance as calculated above, multiplied by the overtake rate of any car pair. For the fast and slow case, we have:</p>
+
+            \begin{align*}
+    \text{Lost Distance in Fast Lane} & = L_{\text{fast}}\left(v_s\right)\times \left(v_f-v_s\right)\rho\left(v_f\right)dv_f\times \rho \left(v_s\right)dv_s
+    \\ \text{Lost Distance in Slow Lane} & = L_{\text{slow}}\left(v_s\right)\times \left(v_f-v_s\right)\rho\left(v_f\right)dv_f\times \rho \left(v_s\right)dv_s
+\end{align*}
+
+            <p>Integrating over all possible speed pairs in the same lane, we get:</p>
+
+            \begin{align*}
+    \text{Lost Distance in Fast Lane} & = \int_{v_s=a}^2 \left[\rho \left(v_s\right)dv_s\right]L_{\text{fast}}\left(v_s\right)\int_{v_f=v_s}^2 \left(v_f-v_s\right)\rho\left(v_f\right)dv_f
+    \\ \text{Lost Distance in Slow Lane} & = \int_{v_s=1}^{a} \left[\rho \left(v_s\right)dv_s\right]L_{\text{slow}}\left(v_s\right)\int_{v_f=v_s}^a \left(v_f-v_s\right)\rho\left(v_f\right)dv_f
+\end{align*}
+
+            <p>Now we substitute in our expression for $\rho(v)$ above. Here, we can drop the constant $C$, since the factor multiples everything, so it will not influence the value of $a$ that minimizes the expression. Furthermore subbing in our expressions for $L_{\text{fast}}$ and $L_{\text{slow}}$, we get:</p>
+
+            $$L_{\text{total}}=\underbrace{\int_a^2\frac{dv_s}{v_s}\left(v_s-a\right)^2\int_{v_s}^2\frac{dv_f}{v_f}\left(v_f-v_s\right)}_{I_1(a)}+\underbrace{\int_{1}^{a}\frac{dv_s}{v_s}v_s^2\int_{v_s}^{a}\frac{dv_f}{v_f}\left(v_f-v_s\right)}_{I_2(a)}$$
+
+            <p>With $I_1(a)$ and $I_2(a)$ simplifying to:</p>
+
+            \begin{align*}
+    I_1(a)=\int_a^2\frac{dv_s}{v_s}\left[\left(2-v_s\right)-v_s\ln\frac{ 2}{v_s}\right]\left(v_s-a\right)^2 & & I_2(a)=\int_1^a v\left[\left(a-v_s\right)-v_s\ln\frac{a}{v_s}\right]dv_s
+\end{align*}
+
+            <p>Taking these the sum of these integrals, differentiating them with respect to $a$, and then setting equal to $0$ gives us the following equation:</p>
+
+            $$15+24a-16a^2-\frac 2a-24a\ln \frac 2a-6a^2\ln \frac 2a=0$$
+
+            <p>I did not find this equation by hand, I would rather drink AIDS water. Now, we run the below code to numerically find the solution of $a$ that satisfies the above equation, precise to 10 decimal places:</p>
+
+                        <div class="code-cell">
+  <pre><code class="language-python">
+from mpmath import mp, findroot, log
+
+mp.dps = 25
+
+def f(a):
+    return 15 + 24*a - 16*a**2 - 2/a - 24*a*log(2/a) - 6*a**2*log(2/a)
+
+a_root = findroot(f, (1, 2))
+
+print(mp.nstr(a_root, 11))  
+  </code></pre>
+</div>
+
+      <p>Which gives a root of:</p>
+
+      $$\boxed{\texttt{a = 1.1771414168}}$$
+
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

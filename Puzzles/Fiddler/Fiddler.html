@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Jane Street Puzzles</title>
+
+  <!-- Optional: keep these if your site uses them elsewhere -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+
+  <!-- Page-specific layout only -->
+  <style>
+    /* Make the top buttons sit side-by-side */
+    .page-hero-top {
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* 3 columns max, responsive to 2/1 */
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Center the content in each card for this page */
+    .card-grid .puzzle-card-inner{
+      padding: 26px 24px;
+      display: block;
+    }
+
+    .card-grid .puzzle-copy h3{
+      margin: 0;
+    }
+
+    .card-grid .muted{
+      margin-top: 10px;
+      max-width: none;
+    }
+
+    @media (max-width: 980px){
+      .card-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px){
+      .card-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Fiddler writeups." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <a class="back-link" href="../index.html" aria-label="Back to Puzzles">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Fiddler on the Proof</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="card-grid">
+
+          <!-- Ordered left-to-right, top-to-bottom -->
+          <a class="puzzle-card" href="Oct10.html" aria-label="October 10">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-copy">
+                <h3>October 10, 2025</h3>
+                <p class="muted">Let’s Make a Tic-Tac-Deal!</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Sept19.html" aria-label="September 19">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-copy">
+                <h3>September 19, 2025</h3>
+                <p class="muted">Can Your Team Self-Organize?</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Sept5.html" aria-label="September 5">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-copy">
+                <h3>September 5, 2025</h3>
+                <p class="muted">How Low (or High) Can You Go?</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Aug22.html" aria-label="August 22">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-copy">
+                <h3>August 22, 2025</h3>
+                <p class="muted">How Far Can You Run Before Sundown?</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Aug15.html" aria-label="August 15">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-copy">
+                <h3>August 15, 2025</h3>
+                <p class="muted">How Much Free Money Can You Win?</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="July25.html" aria-label="July 25">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-copy">
+                <h3>July 25, 2025</h3>
+                <p class="muted">Can You Sprint to the Finish?</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

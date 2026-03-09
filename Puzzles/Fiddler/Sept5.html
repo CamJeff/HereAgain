@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="../Fiddler/Fiddler.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>September 5, 2025: How Low (or High) Can You Go?</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                
+            <p>You’re playing a game of “high-low,” which proceeds as follows:</p>
+
+        <ul>
+            <li>First, you are presented with a random number, $x_1$, which is between $0$ and $1$.</li>
+            <li>A new number, $x_2$, is about to be randomly selected between $0$ and $1$, independent of the first number. But before it’s selected, you must guess how $x_2$ will compare to $x_1$. If you think $x_2$ will be greater than $x_1$ you guess “high.” If you think $x_2$ will be less than $x_1$, you guess “low.” If you guess correctly, you earn a point and advance to the next round. Otherwise, the game is over.</li>
+            <li>If you correctly guessed how $x_2$ compared to $x_1$ then another random number, $x_3$, will be selected between $0$ and $1$. This time, you must compare $x_3$ to $x_2$, guessing whether it will be “high” or “low.” If you guess correctly, you earn a point and advance to the next round. Otherwise, the game is over.</li>
+        </ul>
+
+        <p>You continue playing as many rounds as you can, as long as you keep guessing correctly.</p>
+
+        <p>You quickly realize that the best strategy is to guess "high" whenever the previous number is less than $0.5$, and "low" whenever the previous number is greater than $0.5$.</p>
+
+        <p>With this strategy, what is the probability you will earn at least two points? That is, what are your chances of correctly comparing $x_2$ to $x_1$ and then also correctly comparing $x_3$ to $x_2$?</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://thefiddler.substack.com/p/how-low-or-high-can-you-go" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p>Let $X_1,X_2,X_3\stackrel{\text{iid}}{\sim}\text{Unif}(0,1)$ be random variables, and $x_1,x_2,x_3$ be specific values of these random variables. Adopting the strategy posed in the question, we say we pass round 1 when $x_1<\frac 12\cap x_2>x_1$ or $x_1>\frac 12 \cap x_2< x_1$, and similarly we pass round 2 when $x_2< \frac 12\cap x_3>x_2$ or $x_2>\frac 12\cap x_3< x_2$.</p>
+
+            <p>We condition on succeeding in Round 2 by the event that we succeed in Round 1, and we therefore consider four disjoint events demonstrated in the below integral:</p>
+
+
+            $$\mathbb{P}(\text{2 rounds won})=\underbrace{\iint \mathbb{P}(X_3>x_2)}_{\text{R1: High}\;\;\text{R2: High}}+\underbrace{\iint \mathbb{P}(X_3< x_2)}_{\text{R1: High}\;\;\text{R2: Low}}+\underbrace{\iint \mathbb{P}(X_3>x_2)}_{\text{R1: Low}\;\;\text{R2: High}}+\underbrace{\iint \mathbb{P}(X_3< x_2)}_{\text{R1: Low}\;\;\text{R2: Low}}$$
+
+            <p>Where the text in the underbraces indicate what we guess in each round. Now we need to determine the bounds defining each integral:
+</p>
+
+            <ul>
+                <li> <b>R1: High R2: High:</b> We must have $0< x_1< \frac 12$ since we successfully guess high in R1, and $x_1 < x_2 < \frac 12$ since we require $x_2$ be greater than $x_1$. Since we guess high again on the second round, we also want $x_3>x_2$, therefore $x_2$ must be no greater than $\frac 12$. </li>
+                <li> <b>R1: High R2: Low:</b> We must have $0< x_1< \frac12$ or the same reason as in the above case. If we successfully win with a guess of high in round 1, we must have $\frac 12 < x_2< 1$. If we guess low in the second round, we need $x_3< x_2$. </li>
+                <li> <b>R1: Low R2: High :</b> We require $\frac 12 < x_1< 1$ if guess low in round 1. If successful, we would have $0< x_2< \frac 12$, and thus for $x_3>x_2$, we would need to guess high to win again. </li>
+                <li> <b>R1: Low R2: Low:</b> We require $\frac 12 < x_1< 1$ for the same reason as the previous case. If successful after the first round, this would imply $\frac 12< x_2< x_1$. For a guess of low in round 2, we would need $x_3< x_2$. </li>
+            </ul>
+
+
+            <p>Now we need to determine what are $\mathbb{P}(X_3>x_2)$ and $\mathbb{P}(X_3< x_2)$. Since $X_3$ is a uniform random variable:</p>
+
+            \begin{align*}
+    \mathbb{P}(X_3>x_2) & =\int_{x_2}^1 1dx_3=1-x_2
+    \\ \mathbb{P}(X_3< x_2) & = \int_{0}^{x_2}1dx_3=x_2
+\end{align*}
+
+            <p>And so finally we have:</p>
+
+            \begin{align*}
+    \mathbb{P}(\text{2 rounds won}) & = \int_{0}^{\frac 12}\int_{x_1}^{\frac 12}(1-x_2)dx_2dx_1+\int_{0}^{\frac 12}\int_{\frac 12}^0 x_2dx_2dx_1
+    \\ & +\int_{\frac 12}^1\int_{0}^{\frac 12}(1-x_2)dx_2dx_1+\int_{\frac 12}^1\int_{\frac 12}^{x_1}x_2dx_2dx_1
+    \\ & = \frac{1}{12}+\frac{3}{16}+\frac{3}{16}+\frac{1}{12}
+    \\ & = \boxed{\frac{13}{24}}
+\end{align*}
+
+                <p>Which is roughly $\boxed{0.54}$ chance of winning. </p>
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

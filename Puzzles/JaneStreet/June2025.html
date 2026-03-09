@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax for LaTeX rendering -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="JS.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>June 2025: Some Ones, Somewhere</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                <p>
+                  We are given zero instructions other than the image below and that the format of the answer is a sentence.
+                </p>
+
+                <img src="Pics/June25.png" alt="June2025" class="puzzle-image" />
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://www.janestreet.com/puzzles/some-ones-somewhere-index/" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+                <p>An incredibly strange puzzle that ended up being one of my favourites! </p>
+
+                <p>Inspecting each of the nine partially filled in puzzles and the pieces on the side table showed 
+                    that there were $9$ of the largest light blue tiles, $8$ of the second largest brown tiles, $7$ of 
+                    the third largest yellow tiles, $6$, $5$, and so down to $2$ of the smallest green tiles. If we say the 
+                    smallest green tile is $2$ units long, then the length of the board is $45$ units with a total area of $2025$
+                    units squared, but the area of all tiles combined gives only $2024$ units squared. There is one unit missing, 
+                    and given the suggestive nature of the title of the puzzle, it seemed to reasonable we had to solve the nine 
+                    partially filled in puzzles. 
+                </p>
+
+                <p>To aid in this process, I made a little interactive puzzle for the board so I could build them very easily.
+                    You can check out the tool <a href="https://camjeff.github.io/June2025/" target="_blank" rel="noopener noreferrer">HERE</a>. 
+                    After some time, the nine completed puzzles are shown below:
+                </p>
+
+                <img src="Pics/JuneSol.png" alt="June2025Sol" class="puzzle-image" />
+
+                <p>Looking at the scrabble letters for the top left picture, for example, if row $1$ was A, then row $2$ was B, then column $20$ would be a T, like it is, and then the I and the L match up for $35$ and $38$, respectively if the alphabet restarts at row $27$. So then the row of the empty tile missing is 19, corresponding to an “S”. Then for the columns, the first column is A again and so on, making the column of the empty tile a “U”.</p>
+
+                <p>Then for the second picture (top middle), the row letters stay the same (just keeping the row letters from the top left picture because the rows line up), but the column letters are different, starting the alphabet at T instead for column $1$. This makes the row letter for the empty tile “M” and the column letter “O”. This is continued for the other pictures, getting, in all, for row, column notation as with matrices:</p>
+
+                $$(S,U),(M,O),(F,C),(U,B),(E,S),(I,S),(\_,Q),(\_,A),(\_,E)$$
+
+                <p>With the blanks because there were no letters for rows of the bottom three pictures.</p>
+
+
+                <p>Adding in the “THE” and the “A” from the tables in the correct spots and using the thematic idea so far of the $9$ $9\times 9$ tiles $+$ the $8$ $8\times 8$ tiles $+\cdots +$ the $2$ $2\times 2$ tiles $+$ the $1$ missing tile we have the sum of cubes ($9^3 + 8^3 +\cdots  + 1^3) = 2025 = 45^2$, or: </p>
+
+                $$\boxed{\text{the sum of cubes is a square}}$$
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

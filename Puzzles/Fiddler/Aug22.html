@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="../Fiddler/Fiddler.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>August 22, 2025: How Far Can You Run Before Sundown?</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                
+            <p>You’re participating in a trail run that ends at sundown at $7$ p.m. There are four loops: $1$ mile, $3$ miles, $3.5$ miles, and $4.5$ miles. After completing any given loop, you are randomly assigned another loop to run—this next loop could be the same as the previous one you just ran, or it could be one of the other three. Being assigned your next loop doesn’t take a meaningful amount of time; assume all your time is spent running.</p>
+
+
+            <p>Your "score" in the race is the total distance you run among all completed loops you are assigned. If you’re still out on a loop at $7$ p.m., any completed distance on that loop does not count toward your score!</p>
+
+            <p>It is now $5:55$ p.m. and you have just completed a loop. So far, you’ve been running $10$-minute miles the whole way. You’ll maintain that pace until $7$ p.m.</p>
+
+            <p>On average, what score can you expect to earn between $5:55$ p.m. and $7$ p.m.?</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://thefiddler.substack.com/p/how-far-can-you-run-before-sundown" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p>Let $\mathscr{T}(t)$ be the expected completed running time you obtain when starting a loop with $t$ minutes left. From $5:55-7:00$, there are $65$ minutes left. Since we take $10$ minutes for every mile, the expected number of miles we run in this time is:</p>
+
+            $$\mathbb{E}[\text{Miles}]=\frac{\mathscr{T}(t)}{10}$$
+
+            <p>Each loop will take times: $\mathscr{L}\in \{10,30,35,45\}$, and they are chosen uniformly at random. For $t$ minutes on the clock, we say that if $\mathscr{L}\leq t$, we collect $\mathscr{L}$ minutes, and continue racing for $t-\mathscr{L}$ minutes. If $\mathscr{L}>t$, then we will not complete the loop, and we will score $0$ for this. Thus, using the law of total expectation, we can express $\mathscr{T}(t)$ recursively as:</p>
+
+            \begin{align*}
+    \mathscr{T}(t) & = \mathbb{E}\left[\mathbb{I}_{\{\mathscr{L}\leq t\}}\left(\mathscr{L}+\mathscr{T}(t-\mathscr{L})\right)\right]= \sum_{\mathscr{L}\in \{10,30,35,45\}}\mathbb{P}(\mathscr{L})\mathbb{I}_{\mathscr{L}\leq t}\left(\mathscr{L}+\mathscr{T}(t-\mathscr{L})\right)
+\end{align*}
+
+                <p>And since the times from $\mathscr{L}$ are chosen uniformly at random, we have:</p>
+
+                $$\mathscr{T}(t)=\frac 14\sum_{\mathscr{L}\in \{10,30,35,45\}} \mathbb{I}_{\mathscr{L}\leq t}\left(\mathscr{L}+\mathscr{T}(t-\mathscr{L})\right)$$
+
+                <p>We will always complete loops at times that are multiples of $5$, so we only need to check for times $t=0,5,10,\dots$ and so on. Some useful base cases: $\mathscr{T}(0)=\mathscr{T}(5)=0$. As an example, if there was less than 30 minutes remaining, only $\mathscr{L}=10$ minute loops count, and so we compute
+</p>
+
+                \begin{align*}
+    \mathscr{T}(10) & = \frac 14 \left(10+\mathscr{T}(0)\right)=2.5
+    \\ \mathscr{T}(15) & = \frac 14\left(10+\mathscr{T}(5)\right)=2.5
+    \\ \mathscr{T}(20) & = \frac 14 \left(10+\mathscr{T}(10)\right)=3.125
+    \\ & \vdots
+\end{align*}
+
+            <p>And I'm already bored. We would continue by adding subsequent terms in our summation for different $\mathscr{L}$ value times allowed, but this is a long process to do by hand. Below is small python program that will use this recursive formula to find the desired output $\mathscr{T}(65)$, and then also print the expected miles we run (by dividing $\mathscr{T}(65)$ by $10$).</p>
+
+
+                                                <div class="code-cell">
+  <pre><code class="language-python">
+from functools import lru_cache
+
+LOOP_TIMES = (10, 30, 35, 45)
+P = 1.0 / 4.0  # Probability a given loop is selected
+
+@lru_cache(None)
+def expected_completion_times(t: int) -> float:
+    if t < min(LOOP_TIMES):
+        return 0.0
+    return P * sum((L + expected_completion_times(t - L)) if L <= t else 0.0 for L in LOOP_TIMES)
+
+val_minutes = expected_completion_times(65)
+val_miles = val_minutes / 10.0
+
+print(f"T(65) = {val_minutes:.10f}")
+print(f"Expected score = {val_miles:.10f} miles.")
+  </code></pre>
+</div>
+
+<p>And we get $\mathscr{T}(65)=48.6645...$, and therefore our expected score is $4.866..$, or rounded as $\boxed{4.87}$.</p>
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="JS.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Jan 2026: Timely Journey</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                <p>
+                  We are given absolutely no instructions other than the below image (not even the format of the answer).
+                </p>
+
+                <img src="Pics/timely-journey.jpg" alt="Jan2026" class="puzzle-image" />
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://www.janestreet.com/puzzles/timely-journey-index/" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+                <p>What an absolutely brutal puzzle with so many steps that are based upon the subtlest of hints. Easily the trickiest puzzle from Jane Street I have solved, and judging from the small leaderboard, this is certainly the hardest one Jane Street has put out in a long while.</p>
+
+                <p>It took several weeks of pondering and percolating before I made any real progress. My first observation 
+                was that there seemed to be a year theme going on - the 2026 on the dice, the 1998 on the plant pot, 
+                the 2016 spelled out on the dominos, and the title of the puzzle being <em>timely</em> journey. While 
+                the year angle was a dead end, it did echo the more broad theme of time in this puzzle.
+            </p>
+
+            <p>It then became clear that the crossword numbers were coordinates, given in degree/minute/second notation.
+                The format fit nicely: the latitudes (across clues) were at most 6 digits long, with each group of two 
+                digits when read right to left never exceeding 60. The down clues then had to be longitudes, as again, the first 
+                three digits never exceed 180, with the minutes and seconds numbers also never exceeding 60. 
+            </p>
+
+            <p>This became confirmed when the scrabble tiles and dominoes read as: "C JS 2016 - 04", saying to "see" Jane 
+                Street's April 2016 puzzle, which also had similar cryptic groups of numbers that turned out to be coordinates. 
+                While a cute obervation, it didn't really bring any new information that I hadn't already suspected.
+            </p>
+
+            <p>The big breakthrough, however, is noting that the plant pot contained thyme. With the pentomino acting as the 
+                the letter "Z" and the group of ones dice, we have the phrase "Time Zones" (Thyme z+ones). Therefore, each coordinate 
+                line had to refer to a different time zone name! 
+            </p>
+
+            <p>An interesting obvervation is that on the plant pot, it says "1998 Twin Cities Private Division"
+                 for 1997-98 Minnesota State High School Math League, of which one the top scorers was somebody named 
+                 Andy Niedermaier, who is now a trader at Jane Street and a puzzle enthusiast, so I'm guessing he most likely came up 
+                 with this puzzle. 
+                </p>
+
+
+            <p>After lots of toying around, I managed to fill in the crossword with the time zone names. After this step, I thought 
+                the solution would easily present itself. But instead, noting the shift key on the dirty keyboard, gave the idea of 
+                shifting the coloured letters up by their corresponding coloured numbers in the clue. Doing so for the blue letters 
+                when starting at Madeira (UTC+0) and going East (UTC +1, +2, +3, ... -1), we spell out the phrase "WHAT RED LETTERS 
+                ARE MISSING". 
+            </p>
+
+            <p>Now I wasn't sure if we were to supposed to shift the red letters up or down, shifting the red letters up, we get every 
+                letter except 'TZ', and shifting down we get 'BEHNOPQRTZ' as the missing letters. I wasn't sure which was the answer, but noticing the dice that 
+                say 20 and 26, corresponding to the letter T and Z (also referring time zones), and when shifting the red letters up 
+                and arranging them from UTC+0 offset and going East, if does spell out the alphabet (ABCD..), with T and Z missing of course.
+                The full solution is shown below:
+            </p>
+
+            <a href="Pics/JanAns.jpg">
+    <img src="Pics/JanAns.jpg" alt="NLL" class="puzzle-image2">
+</a>
+
+            <p>While this was fun and all, I was a little let down by the anticlimatic final answer. It was so simple and 
+            it was hidden in the dice all along - an observation that I noticed way before doing all this work. Now it makes
+            sense why they didn't mention the format of the final answer. The journey of this puzzle was much more satisfying
+            than the final answer/destination.
+        </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

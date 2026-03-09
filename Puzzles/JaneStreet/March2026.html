@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="JS.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>March 2026: Planetary Parade</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+
+                <p>We are enjoying a planetary parade during the beginning of this month here on Earth, but my alien friend from the distant planet Pyrknot (well modeled as a perfect sphere) isn’t too impressed. Their single-star system has six planets other than Pyrknot with such chaotic orbits that each night these planets independently appear in uniformly random locations in the Pyrknothian sky (the planets aren’t visible in daylight). If at a given moment there exists somewhere on Pyrknot that all six planets are visible, then from my friend’s position on the surface they have an $\alpha$ probability of also seeing all of the planets.</p>
+
+                <p>My friend is considering building a tower to improve their chances of seeing these planetary parades. Assume the tower allows the viewing of every celestial body that could be seen from at least one location on the surface of Pyrknot less than a distance $r$ from the base of the tower. In the limit of $r$ being small compared to the radius $R$ of Pyrknot, the new probability of seeing the planetary parade from the top of the tower is linearly approximated by $\alpha+\beta\cdot (r/R)$. Find $\alpha$ and $\beta$ in exact terms.</p>
+
+          
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://www.janestreet.com/puzzles/current-puzzle/" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p>The setup and approach for this puzzle is a little deceptive - I initially thought you handle all 6 planets, proceed with the 
+                below approach, and you're done. While this is <em>nearly</em> correct, I realized my mistake in this when I saw my first submission was incorrect.
+                In fact, there were barely any correct submissions the first few days! Re-reading the puzzle, it is noted that the planets are only 
+                visible during the night, which means we must also consider the single star in addition to the 6 other planets. With that in mind, I did the below work:
+            </p>
+
+            <p>Firstly, imagine the planet Pyrknot at the centre of a celestial sphere, as shown below, and suppose each planet and the star takes a point at random on this celestial
+                sphere. We are told this explicitly for the planets, but for the star, it is implied since we assume we rotate around the star and on our own axis like all other 
+                planets. So, the star's position is also random with respect to the sky on Pyrknot due to rotational symmetry.
+            </p>
+
+            <img src="Pics/Sphere.png" alt="April2025" class="puzzle-imagesmall" />
+
+            <p>For simplicity, assume the friend on Pyrknot is at the north pole. Define the events:</p>
+
+            <ul>
+                <li>$A$ : There exists some location on Pyrknot that all 6 planets are visible</li>
+                <li>$B$ : The friend on Pyrknot can see all 6 planets</li>
+            </ul>
+
+            <p>Notice that $B\subset A$. Then form the puzzle statement, we want to find:</p>
+
+            $$\alpha=\mathbb{P}(B|A)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(A)}=\frac{\mathbb{P}(B)}{\mathbb{P}(A)}$$
+
+            <p>Let's start with $\mathbb{P}(B)$. Notice that any planet, represented as a point on the celestial sphere, will be
+                visible from the North Pole (my friend's location), if the planet is in the top half/hemisphere of the celestial sphere (above their horizon). Since each 
+                planet's position is random, the probability that any planet will be in the top half of the celestial sphere is simply $\frac 12$. 
+                So we want all 6 planets to be in the top half, and the star to be in the bottom half (below their horizon, i.e nighttime), as planets are only visible at night. So in total, 
+                we have:
+            </p>
+
+            $$\mathbb{P}(B)=\left(\frac 12\right)^7=\frac{1}{128}$$
+
+
+            <p>For $\mathbb{P}(A)$, we simply want the probability that all 6 planets lie in one common hemisphere (no mater where you slice 
+                the celestial sphere), and the star to be in the opposite hemisphere. Due the star's position in the Pyrknothian sky is random and uniform as we orbit,
+                and symmetry between the hemisphere's, this is equivalent to asking the probability that $7$ points (6 planets, 1 star) chosen 
+                randomly on a sphere (the celestial sphere) lie in a common hemisphere. 
+            </p>
+
+            <p>If you're still not convinced, take the star's diametrically opposite point reflected in the flat part of the hemisphere, and 
+                call this an 'image-star'. If the image-star is above the horizon, the real star is below the horizon, so we are asking the probability 
+                that 6 planets + the image-star is on one common hemisphere. 
+            </p>
+
+            <p>A quick Google search to this question leads to Wendel's theorem, a formula which answers this question. Wendel's theorem is:</p>
+
+            $$p_{n,N}=2^{1-N}\sum_{k=0}^{n-1}{N-1 \choose k}$$
+
+            <p>Where $n=3$ is the dimension (we're in 3D), and $N=7$ is the number of points. Plugging in gives:</p>
+
+            $$\mathbb{P}(A)=\frac{11}{32}$$
+
+            <p>And so $\alpha$ is:</p>
+
+            $$\alpha=\frac{1/128}{11/32}=\boxed{\frac{1}{44}}$$
+
+            <p>Now for the tower. Define the new event: 
+            </p>
+
+            <ul>
+                <li>$B^*:$ The friend on Pyrknot can see all 6 planets from the tower</li>
+            </ul>
+
+            <p>And so we want to find:</p>
+
+            $$\beta=\frac{\mathbb{P}(B^*)}{\mathbb{P}(A)}$$
+
+            <p>The tower essentially dips the horizon to allow the friend to see a planet that would be visible from any 
+                ground location within distance $r$. On this planet of radius $R$, this is like expanding the angular radius of the friend's 
+                viewing horizon by a small angle, so the effective viewing angle is $90^{\circ}+\frac rR$.</p>
+
+            <p>So instead of a hemisphere that the planets need to be in, they need to be in a spherical cap defined by a polar angle 
+                of $90^{\circ}+\frac rR$. I guess technically it is not a cap, but can be approximated as such in the limit of $r$ being small. 
+                A quick Google search says that this area is given by the equation $A=2\pi \tilde{R}^2(1-\cos \theta)$, where $\tilde{R}$
+                is the radius of the celestial sphere. And so the probability that a planet is caught within this spherical cap is the area $A$, 
+                divided by the total area of the celestial sphere, $4\pi \tilde{R}^2$. So we have that:
+            </p>
+
+            $$\frac{2\pi \tilde{R}^2\left(1-\cos\left(90^{\circ}+\frac r R\right)\right)}{4\pi \tilde{R}^2}=\frac{1-\cos\left(90^{\circ}+\frac r R\right)}{2}=\frac{1+\sin\left(\frac r R\right)}{2}$$
+
+            <p>And so for 6 planets, we take this expression to the power of 6. And again, we want the sun to be in the area excluded by this area, 
+                so that's it nighttime and the planets are visible. So we take the complement:
+            </p>
+
+            $$1-\frac{1+\sin\left(\frac r R\right)}{2}=\frac{1-\sin\left(\frac r R\right)}{2}$$
+
+            <p>And we have:</p>
+
+            $$\mathbb{P}(B^*)=\underbrace{\left(\frac{1+\sin\left(\frac r R\right)}{2}\right)^6}_{\text{6 Planets}}\underbrace{\left(\frac{1-\sin\left(\frac r R\right)}{2}\right)}_{\text{Star}}$$
+
+            <p>Since $r\ll R$, we can use the small angle approximation and also Taylor expand to look for the desired linear term. 
+            </p>
+
+            $$\left(\frac{1+\sin\left(\frac r R\right)}{2}\right)^6\left(\frac{1-\sin\left(\frac r R\right)}{2}\right)\approx \frac{1}{128}+\frac{5}{128}\sin\left(\frac rR\right)+\cdots\approx \frac{1}{128}+\frac{5}{128}\cdot \left(\frac rR\right)$$
+
+            <p>Taking the linear coefficient and conditining with $\mathbb{P}(A)$, we get our answer:</p>
+
+            $$\beta=\frac{5/128}{11/32}=\boxed{\frac{5}{44}}$$
+
+            <p>So our final answer is:</p>
+
+            $$\boxed{\alpha=\frac{1}{44}\;\;\;\text{and}\;\;\;\beta=\frac{5}{44}}$$
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

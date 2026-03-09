@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="../Fiddler/Fiddler.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>August 15, 2025: How Much Free Money Can You Win?</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                
+                <p>A casino offers you \$$55$ worth of “free play vouchers.” You specifically receive three \$$10$ vouchers and one \$$25$ voucher.</p>
+
+         <p>You can play any or all vouchers on either side of an even-money game (think red vs. black in roulette, without those pesky green pockets) as many times as you want (or can). You keep the vouchers wagered on any winning bet and get a corresponding cash amount equal to the vouchers for the win. But you lose the vouchers wagered on any losing bet, with no cash award. Vouchers cannot be split into smaller amounts, and you can only wager vouchers (not cash).</p>
+
+         <p>What is the guaranteed minimum amount of money you can surely win, no matter how bad your luck? And what betting strategy always gets you at least that amount?</p>
+
+         <p><b>Hint:</b> You can play vouchers on both sides of the even money game at the same time!</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://thefiddler.substack.com/p/can-you-sprint-to-the-finish" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p><b>Strategy 1:</b> You place vouchers one-by-one on either black or red. This seems enticing, as you have a 50-50 chance of winning, and then you can keep recycling your vouchers and collect cash indefinitely. However, this strategy does not guarantee you any money. In fact, with four vouchers, there's a $1/16$ chance you don't win <i>any</i> money. And so, this is probably not the strategy to use.</p>
+
+            <p><b>Strategy 2:</b> We place some combination of the vouchers on both red and black. My natural inclination is to try to keep the dollar amount of vouchers as large and as even as possible between red and black. </p>
+
+            <p>Let me say that I bet two \$$10$ vouchers on red, and \$$25$ on black. The following tree shows how much money I would win for every outcome, terminating until I only have one voucher remaining (as you are not guaranteed any money by using one voucher, as per Strategy 1). </p>
+
+            <p>Everything in the curly braces represent your vouchers. Red coloured vouchers indicate you bet on red, whereas black coloured vouchers means you bet on black. The grayed out voucher means it is not in play for that round. Each level of the tree represents successive rounds, and the numbers beside the tree edges represent how much money you win in that given game outcome. </p>
+
+            <img src="Pics/Tree.png" alt="Tree" class="puzzle-imagesmall">
+
+            <p>We notice in the worst-case scenario, we are guaranteed to make $\$25+\$10=\$35$. </p>
+
+            <p>This is pretty good, but are there better voucher combinations? We can condense the tree structure above into a simple input/output function:</p>
+
+            $$\mathcal{V}(\mathcal{S})=\max_{(\color{red}R\color{black},B,\color{gray}N\color{black})}\min\bigg[\sum \color{red}R\color{black}+\mathcal{V}(\color{red}R \color{black}\cup \color{gray}N\color{black}),\sum B+\mathcal{V}(B\cup \color{gray}N\color{black})\bigg]$$
+
+            Where our sample space is $\mathcal{S}=\{10,10,10,25\}$, $\color{red}R\color{black}$ is a voucher bet on red, and $B$ is a voucher bet on black, and $\color{gray}N\color{black}$ is a voucher not in play. After some work:
+
+            $$
+\begin{aligned}
+&\mathcal{V}({\color{red}10\color{black}},{\color{black}10+10\color{black}}\;|\;{\color{gray}25\color{black}})
+ =\boxed{20},
+&\mathcal{V}({\color{red}10\color{black}},{\color{black}10\color{black}}\;|\;{\color{gray}25,10\color{black}})
+=\boxed{30},
+\\[0.8em]
+&\mathcal{V}({\color{red}25+10\color{black}},{\color{black}10\color{black}}\;|\;{\color{gray}10\color{black}})=\boxed{20},
+&\mathcal{V}({\color{red}25\color{black}},{\color{black}10+10+10\color{black}}\;|\;{\color{gray}\varnothing\color{black}})
+=\boxed{25},
+\\[0.8em]
+&\mathcal{V}({\color{red}25+10\color{black}},{\color{black}10+10\color{black}}\;|\;{\color{gray}\varnothing\color{black}})
+=\boxed{30},
+&\mathcal{V}({\color{red}25+10+10\color{black}},{\color{black}10\color{black}}\;|\;{\color{gray}\varnothing\color{black}})
+=\boxed{10}.
+\end{aligned}
+$$
+
+                <p>Drawing out tree diagrams can confirm the above results. So it seems our best strategy is to bet \$$25$ against \$$20$ from the two \$$10$ vouchers, which yield the highest cash earnings of $\boxed{\$35}$.
+</p>
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzles</title>
+
+  <!-- Optional: keep these if your site uses them elsewhere -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Puzzles-only stylesheet -->
+  <link rel="stylesheet" href="puzzles.css" />
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle writeups and notes." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Puzzles</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="puzzle-stack">
+
+          <a class="puzzle-card" href="JaneStreet/JS.html" aria-label="Go to Jane Street Puzzles">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/JS.jpg" alt="" />
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Jane Street Puzzles</h3>
+                <p class="muted">A log of my thoughts, solutions, and approaches to some puzzles I've soled from Jane Street.</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Fiddler/Fiddler.html" aria-label="Go to Fiddler on the Proof">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/Fiddler.jpg" alt="" class="icon-large"/>
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Fiddler on the Proof</h3>
+                <p class="muted">A place to dump some of my work on weekly problems given out by a math blog called Fiddler on the Proof.</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

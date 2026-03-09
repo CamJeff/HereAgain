@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax for LaTeX rendering -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="JS.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>February 2026: Subtiles 2</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+
+                <img src="Pics/subtiles-2.jpg" alt="Feb2026" class="puzzle-image" />
+                <p>
+                  Place positive integers in some of the cells above, so that the grid contains one $1$, two $2$’s, three $3$’s, and so on, up to $N$ $N$’s. (For some $N$.)
+                </p>
+
+                <p>For any integer $K$ in the grid, the cells labeled $K$ must form an orthogonally connected region (a “$K$-omino”). Furthermore, for each $K > 1$ the $K$-omino must “contain” the shape formed by the ($K-1$)’s. (Rotations and reflections are allowed.)</p>
+
+                <p>Some of the cells have been labeled, but unlike our previous <a href="https://www.janestreet.com/puzzles/subtiles-index/" target="_blank" rel="noopener noreferrer">Subtiles</a>, we have used variables to obscure those values. (As in the example, at the bottom.)</p>
+
+                <p>After completing the grid, compute, in each row, the sum of the labeled cells. The answer to this puzzle is the product of the maximum and minimum row sums.</p>
+                
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://www.janestreet.com/puzzles/subtiles-2-index/" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+
+                <p>A very fun grid puzzle that feels unique in that it's not as daunting as it looks.
+                    I find some of the grid puzzles from Jane Street look so horrendous that the only way 
+                    to solve it in a somewhat reasonable time is to design a program to solve it for you. 
+                    Solving it this way takes a lot of the fun out of these puzzles in my opinion, but sometimes 
+                    it seems there is no choice. I strongly believe that these grid puzzles should NOT be designed 
+                    that way, that is, anybody could sit down and solve it by hand with some effort.
+                </p>
+
+                <p>I appreciated this one because it's very doable to solve by hand, and in fact,
+                    is probably much faster than writing a program to solve it automatically. The first 
+                    thing to do is to determine the values of $a$, $b$, and $c$. I wasn't very methodical with this, 
+                    but knowing each expression is an integer between $1$ and maximum $17$, I just guessed and checked 
+                    some numbers. It became clear that $a=\frac 14$, $b=-3$, and $c=\frac 12$. 
+                </p>
+
+                <p>Once that was done, I decided to quickly make an interactive version of the puzzle to ease
+                    the process of solving. Check out the tool <a href="https://camjeff.github.io/February2026/" target="_blank" rel="noopener noreferrer">HERE</a>.
+                    To use it, simply click, hold, and drag from a numbered cell to neighboring empty cells to fill 
+                    them. To delete numbered cell, click on it. 
+                </p>
+
+                <p>I started with the $12$'s since there were many on the starting grid and they were the most 
+                    constrained, with only a few shapes you could make. After $12$, I moved onto $13$, then $6$, 
+                    then $7$, and so on. The completed grid I got is shown below: 
+                </p>
+
+                <img src="Pics/FebSolv.png" alt="Feb2026Solv" class="puzzle-image1_5" />
+
+                <p>And so the answer is $56\times 162=\boxed{9072}$.</p>
+
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

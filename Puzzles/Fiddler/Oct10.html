@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Puzzle Template</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Reuse the Puzzles styling for full consistency -->
+  <link rel="stylesheet" href="../puzzles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams'
+      },
+      options: { renderActions: { addMenu: [] } }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Page-specific layout only -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-stack{
+      display:flex;
+      flex-direction:column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    /* Cards here are NOT links, so disable hover "click" cues */
+    .content-card,
+    .content-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    .content-card::after,
+    .content-card:hover::after{
+    display: none !important;
+    }
+
+    .content-card .puzzle-card-inner{
+      display:block;
+      padding: 26px 24px;
+    }
+
+    .section-title{
+      margin: 0 0 14px;
+      font-weight:300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .content-body ul, .content-body ol{
+      margin: 0 0 14px 22px;
+      padding: 0;
+    }
+
+    .content-body code{
+      padding: 2px 6px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      font-size: 0.95em;
+    }
+
+    .content-body pre{
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      overflow:auto;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(18,35,62,0.12);
+      margin: 18px 0;
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle statement and solution." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <!-- Point this wherever you want (e.g., JS.html or Puzzles/index.html) -->
+          <a class="back-link" href="../Fiddler/Fiddler.html" aria-label="Back to Jane Street index">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>October 10, 2025: Let’s Make a Tic-Tac-Deal!</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="content-stack">
+
+          <!-- Puzzle Statement Card -->
+          <section class="puzzle-card content-card" aria-label="Puzzle statement">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Puzzle Statement</h2>
+
+              <div class="content-body">
+                
+            <p>The game of Tic-Tac-Deal 2.0 has a 3-by-3 square grid with the numbers 3 through 11, arranged as follows:</p>
+
+            \begin{align*}
+    3\;\;\;\;4\;\;\;\;5\;
+    \\ 6\;\;\;\;7\;\;\;\;8\;
+    \\ 9\;\;\;10\;\;\;11
+\end{align*}
+
+        <p>You start by rolling a standard pair of six-sided dice and add the two numbers rolled. You place an X on the board on the square that contains the sum. If the sum is a $2$ or $12$, or if you roll a sum that you have previously rolled, then your roll is wasted.</p>
+
+        <p>If you have exactly three rolls of the dice, what are your chances of getting three Xs in a row (either horizontally, vertically, or diagonally)?</p>
+
+                <div class="divider"></div>
+
+                <p class="muted" style="margin:0;">
+  Puzzle link <a href="https://thefiddler.substack.com/p/can-your-team-self-organize" target="_blank" rel="noopener noreferrer">here</a>.
+</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Solution Card -->
+          <section class="puzzle-card content-card" aria-label="Solution">
+            <div class="puzzle-card-inner">
+              <h2 class="section-title">Solution</h2>
+
+              <div class="content-body">
+
+            <p>Let's look at the probability of rolling each summed numbers from the two dice:</p>
+
+            <img src="Pics/YesTable.png" alt="Tree" class="puzzle-image1_5">
+
+            <p>Looking at the grid, we see that the only ways to win within three rolls is to roll one of the following triplets of numbers (in any order), and their probabilities are shown:</p>
+
+            \begin{align*}
+ \text{Horizontal Win}=\begin{cases}
+   (3,4,5): &   3!\frac{2\cdot 3\cdot4}{36^3}=3!\frac{24}{36^3}
+   \\ (6,7,8): & 3!\frac{5\cdot 6\cdot5}{36^3}=3!\frac{150}{36^3}
+   \\ (9,10,11): & 3!\frac{4\cdot 3\cdot2}{36^3}=3!\frac{24}{36^3}
+ \end{cases}   & & \text{Vertical Win}=\begin{cases}
+   (3,6,9): &   3!\frac{2\cdot 5\cdot4}{36^3}=3!\frac{40}{36^3}
+   \\ (4,7,10): & 3!\frac{3\cdot 6\cdot3}{36^3}=3!\frac{54}{36^3}
+   \\ (5,8,11): & 3!\frac{4\cdot 5\cdot2}{36^3}=3!\frac{40}{36^3}
+ \end{cases}
+\end{align*}
+$$\text{Diagonal Win}=\begin{cases}
+   (3,7,11): &   3!\frac{2\cdot 6\cdot2}{36^3}=3!\frac{24}{36^3}
+   \\ (5,7,9): & 3!\frac{4\cdot 6\cdot4}{36^3}=3!\frac{96}{36^3}
+ \end{cases}$$
+
+            <p>And the so the probability of winning in three rolls is just:</p>
+
+                $$\mathbb{P}(\text{Win})=3!\frac{24+150+24+40+54+40+24+96}{36^3}=\boxed{\frac{113}{1944}}$$
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>
