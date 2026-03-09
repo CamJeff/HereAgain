@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Notes</title>
+
+  <!-- Optional: keep these if your site uses them elsewhere -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Puzzles-only stylesheet -->
+  <link rel="stylesheet" href="notes.css" />
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Puzzle writeups and notes." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Notes</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <div class="puzzle-stack">
+
+          <a class="puzzle-card" href="#" aria-label="Go to Probability">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/Prob.svg" alt="" />
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Probability</h3>
+                <p class="muted">A collection of my notes that provide a comprehensive overview of introductory probability.</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="#" aria-label="Go to Stochastic Processes">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/Stoch.png" alt="" class="icon-large"/>
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Stochastic Processes</h3>
+                <p class="muted">All my notes for MATH 447: Intro to Stochastic Processes, taken at McGill in Winter 2025. 
+                      <em>(Taught by Elliot Paquette)</em></p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="#" aria-label="Go to Applied Machine Learning">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/ML.svg" alt="" class="icon-large"/>
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Applied Machine Learning</h3>
+                <p class="muted">All my notes for COMP 551: Applied Machine Learning, taken at McGill in Fall 2025. <em>(Taught by Reihaneh Rabbany and S&eacutekou-Oumar Kaba)</em></p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Mech/mech.html" aria-label="Go to Classical Mechanics">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/top.png" alt="" class="icon-large"/>
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Classical Mechanics</h3>
+                <p class="muted">All my notes for various classical mechanics courses I have taken throghout my degree.</p>
+              </div>
+            </div>
+          </a>
+
+          <a class="puzzle-card" href="Persian/persian.html" aria-label="Go to Persian Language">
+            <div class="puzzle-card-inner">
+              <div class="puzzle-icon" aria-hidden="true">
+                <!-- Update this path to your real icon file -->
+                <img src="icons/Per.png" alt="" />
+              </div>
+
+              <div class="puzzle-copy">
+                <h3>Persian Language</h3>
+                <p class="muted">I have started to learn Persian to better connect with my Iranian boyfriend and his friends and family.</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

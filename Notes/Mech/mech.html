@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Persian</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Use your shared styling -->
+  <link rel="stylesheet" href="../notes.css" />
+
+  <!-- Page-specific styling (kept minimal + consistent) -->
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Big main card */
+    .big-card .puzzle-card-inner{
+      display: block; /* overrides the flex layout used for icon cards */
+      padding: 30px 28px;
+    }
+
+    .big-card h2{
+      margin: 0 0 10px;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .big-card .muted{
+      margin-top: 0;
+      max-width: 80ch;
+    }
+
+    /* Link rows inside the big card */
+    .persian-links{
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .persian-link{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+
+      padding: 14px 16px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 10px 26px rgba(12,29,58,0.07);
+
+      border-radius: 0; /* sharp corners */
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .persian-link:hover{
+      transform: translateY(-3px);
+      border-color: rgba(22,37,61,0.34);
+      box-shadow: 0 18px 40px rgba(12,29,58,0.12);
+    }
+
+    .persian-link .label{
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .persian-link .arrow{
+      color: var(--accent);
+      font-size: 18px;
+      flex: 0 0 auto;
+    }
+    .big-card,
+    .big-card:hover{
+    transform: none !important;
+    animation: none !important;
+    box-shadow: 0 18px 40px var(--shadow);
+    border-color: var(--panel-line);
+    cursor: default;
+    }
+
+    /* Remove dashed hover frame if your cards use it */
+    .big-card::after,
+    .big-card:hover::after{
+    display: none !important;
+    }
+
+    @media (max-width: 640px){
+      .big-card .puzzle-card-inner{ padding: 24px 18px; }
+      .persian-link{ padding: 12px 14px; }
+      .persian-link .label{ font-size: 0.9rem; }
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Notes and progress on Persian (Farsi)." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <!-- Update these hrefs however you want later -->
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <a class="back-link" href="../index.html" aria-label="Back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Classical Mechanics</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <section class="puzzle-card big-card" aria-label="Persian content hub">
+          <div class="puzzle-card-inner">
+
+            <h2>Index</h2>
+            <p class="muted">
+              My lectures in classical mechanics, sorted in order.
+            </p>
+
+            <div class="persian-links">
+
+              <a class="persian-link" href="Chapter1.html" aria-label="Funny Persian words and expressions">
+                <span class="label">Chapter 1: Variational Calculus</span>
+                <i class="fa fa-angle-right arrow" aria-hidden="true"></i>
+              </a>
+
+              <a class="persian-link" href="Chapter2.html" aria-label="Basic verbs">
+                <span class="label">Chapter 2: Lagrangian Mechanics</span>
+                <i class="fa fa-angle-right arrow" aria-hidden="true"></i>
+              </a>
+
+              <a class="persian-link" href="#" aria-label="Past tense">
+                <span class="label">Chapter 3: Rotation and Rigid Bodies</span>
+                <i class="fa fa-angle-right arrow" aria-hidden="true"></i>
+              </a>
+
+              <a class="persian-link" href="#" aria-label="Past tense">
+                <span class="label">Chapter 4: Hamiltonian Mechanics</span>
+                <i class="fa fa-angle-right arrow" aria-hidden="true"></i>
+              </a>
+
+              <a class="persian-link" href="#" aria-label="Past tense">
+                <span class="label">Chapter 5: Central Force Motion</span>
+                <i class="fa fa-angle-right arrow" aria-hidden="true"></i>
+              </a>
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

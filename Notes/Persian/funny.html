@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Funny Persian Words/Expressions</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  <!-- Your shared styling (grid background, card styles, buttons, footer, etc.) -->
+  <link rel="stylesheet" href="../notes.css" />
+
+  <!-- Persian-friendly font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* One large card, but NOT clickable/animated */
+    .big-card,
+    .big-card:hover{
+      transform: none !important;
+      animation: none !important;
+      cursor: default;
+    }
+    .big-card::after,
+    .big-card:hover::after{
+      display: none !important;
+    }
+    .big-card .puzzle-card-inner{
+      display: block;
+      padding: 30px 28px;
+    }
+
+    /* Section styling inside the big card */
+    .persian-sections{
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    .section-block{
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 10px 26px rgba(12,29,58,0.07);
+      border-radius: 0; /* sharp corners */
+      padding: 18px 18px 14px;
+    }
+
+    .section-title{
+      margin: 0 0 12px;
+      font-weight: 300;
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    /* Entries list */
+    .entry-list{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .entry{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 3fr; /* script | pronunciation | meaning */
+    gap: 18px;
+    align-items: start;
+
+    padding: 12px 14px;
+    border: 1px solid rgba(18,35,62,0.12);
+    background: rgba(255,255,255,0.70);
+    border-radius: 0; /* sharp corners */
+    }
+
+    .col-label{
+      display: none;
+    }
+
+    /* Persian script */
+    .fa-script{
+      font-family: "Vazirmatn", "Noto Naskh Arabic", "Noto Sans Arabic", serif;
+      font-size: 1.15rem;
+      direction: rtl;
+      unicode-bidi: isolate;
+      letter-spacing: 0;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    .pron{
+      font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .meaning{
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* Tiny helper row under titles */
+    .hint{
+        color: var(--ink);
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 0 0 18px;
+    }
+
+    /* Mobile: stack each entry into labeled rows */
+    @media (max-width: 800px){
+      .entry{
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .col-label{
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+      .fa-script{ font-size: 1.2rem; }
+    }
+
+    @media (max-width: 640px){
+      .big-card .puzzle-card-inner{ padding: 24px 18px; }
+      .section-block{ padding: 16px 14px 12px; }
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Funny Persian words/expressions, with pronunciation and meaning." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <!-- Update these hrefs however you want later -->
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <a class="back-link" href="persian.html" aria-label="Back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Funny Persian Words/Expressions</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <section class="puzzle-card big-card" aria-label="Funny Persian content card">
+          <div class="puzzle-card-inner">
+
+            <p class="hint">
+              A list of some funny, memorable, or offensive phrases that I should keep in mind. In fact, many of these 
+              words were the first things I said in Persian!
+            </p>
+
+            <div class="persian-sections">
+
+              <!-- Curse words -->
+              <section class="section-block" aria-label="Curse words">
+                <h2 class="section-title">Curse words</h2>
+
+                <ul class="entry-list">
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> کُسِ نَنَت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">koseh nanat</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Probably the most offensive Persian curse word. 'Kos' means pussy, and 'nanat' 
+                        is a colloquial term for mother, so it roughly translates to 'Mother's pussy' or 'Motherfucker'. If you 
+                        say this someone, you'll probably get into a fist fight.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">کِیرِ خَر</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kireh khar</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">'Kir' means dick, and 'khar' mean donkey, so it means 'donkey dick'. It's typical to utter this to yourself 
+                        while you're roadraging or when somebody nearby in public is being loud and annoying.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> گُه خُردَم</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">goh khordam</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">'Goh' means shit, and 'khordam' means I ate, so it translate to 'I ate shit'. 
+                        This is typically used as a profuse apology/grovelling.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">کُس مَغز</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kos maghz</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">'Kos' means pussy, and 'maghz' means brain, so this means 'pussy head/brain'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">کُس کِش </div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kos kesh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">'Kos' means pussy, and 'kesh' is a stretchy elastic band, so I guess this means 'pussy stretcher'?
+                        That seems like a compliment to me, but I guess it's offensive.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> کُس خُل </div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kos khol</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">We know what 'kos' means, and 'khol' is describing something foolish. Taken together,
+                        this phrase is just an insult/name-call similar to 'idiot'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">  کُس میخ</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kos meekh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> Another 'kos'/'pussy' curse word that means 'idiot'. 'Meekh' translates to nail, as in a hammer/nail.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">  کُس‌ لیس </div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kos lees</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">We know what 'kos' means, but 'lees' means 'lick', so this translates to 'pussy licker'. Again, 
+                        not very insulting if you ask me. Some may take this name as a badge of honour.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">  خَرکُس </div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">khar kos</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> Again, 'khar' is donkey, 'kos' is pussy, so this mean 'donkey pussy' literally, but is used in the 
+                        same spirit as calling someone an idiot.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">   کَلِه کیری</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kaleh kiri</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'Kir' means dick, and 'kaleh' means head, so this phrase means 'dickhead'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">کیرَم تو دَهَنِت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kiram tō dahanet</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'Kiram' is my dick, 'tō' is you/your, and 'dahanet' is your mouth, so it means 'my dick in your mouth'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">  ریدَم دَهَنِت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">reedam dahanet</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> We know what 'dahanet' means from above, and 'reedam' means 'I shat', so this classy phrase translates to 'I shat in your mouth'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">سوسمارخور</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">soosmār khor</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'soosmār' means lizard, and 'khor' refers to eating, so this means 'lizard eater', and is used 
+                        as a slur against Arabs.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">مَلَخ‌ خور</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">malakh khor</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> Similar to the last one, 'malakh' means locust, and 'khor' refers to eating, so this means 'locust eater', and is used 
+                        as a slur against Arabs.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">کاکا سِیاه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kākā see-āh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'see-āh' means black, and this slur is essentially the Persian equivalent of the n-word.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> کونی</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">koonee</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'koon' means ass, and a 'y' sound at the end, means that the word is related to that noun. So literally, 
+                        'koonee' just means related to ass, but it is in fact used as a homophobic slur, equivalent to the f-slur.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> ضَعيفِه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">za-eefeh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'za-eef' means weak, and so this term means 'weak person', but it used as a sexist slur against women, 
+                        calling them 'weak'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> خایِه‌مال</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">khai-eh māl</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'khai-eh' is a vulgar word for testicle, and 'mal' means someone who rubs, so this literally means 'ball/testicle rubber', 
+                        and is used to describe someone who sucks up to people in power, similar to the term 'kiss-ass' or 'brown noser'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> مادَر جِندِه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">mādar jendeh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'mādar' means mother, and 'jendeh' is a curse word that is sort of the equivalent of 'bitch', so 
+                        this phrase means 'son of a bitch'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">حَروم‌زادِه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">haroom zādeh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'Haroom' is the colloquial way of saying 'harām' or forbidden, and 'zādeh' means offspring of,
+                         so this really just means 'bastard'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">پِدَر سَگ</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">pedar sag</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning"> 'Pedar" means father, and 'sag' means dog, so I guess this means 'dog father', but it's really 
+                        a light insult that is somewhat equivalent to calling someone an 'idiot' or a 'jerk'.
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <!-- Expressions -->
+              <section class="section-block" aria-label="Expressions">
+                <h2 class="section-title">Expressions</h2>
+
+                <ul class="entry-list">
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">تو کُونِش عَروسِه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">tō koonesh arooseh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Literally translates to 'A bride/wedding in your ass', which means that the person is very excited/happy.</div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">چِه خَریه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">cheh khareyeh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Literally means 'what a donkey', and I've been told you can use this when something is very cute.</div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">دودول طَلا</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">doodool talā</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">'doodool' is a childish way of saying penis, similar to the word 'willie' or 'peepee' in English. 'Talā' means gold, 
+                        so this means 'golden penis', and is used by mothers as an endearing phrase to describe their young sons. Little creeped out by this one.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> خاک بَر سَرِت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">khāk bar saret</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Literally means 'dirt on your head' (khāk=dirt, bar=on, saret=your head). Initially I thoght it meant you hope the person 
+                        dies/gets buried, but upon further research, I found that during the mourning period, it was customary for Iranians to pour dirt over their own heads as a sign of grief.
+                        So this could, in fact, mean that you are wishing death upon a loved one of the person you say this to. Also, this insult is very versatile, you can say it to your 
+                        mortal enemy, or to close friend in a playful way.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> گوز به ریشِت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">gooz beh reeshet</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Literally means 'fart on your beard' (gooz=fart, beh=on, reeshet=your beard), which I guess is a creative 
+                        way of expressing your distate of someone.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">ریدَم رو روحِ مادَرِت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">reedam roo rooheh mādaret</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Literally means 'I shat on your mother's ghost' (ridam=I shat, roo=on, roohe=ghost/spirit, mādaret=your mom). 
+                        This is quite an offensive insult that not only insults the person you're saying it to, but their entire bloodline.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">نَه اینوَری نَه اونوَری، کیرَم تو بِیتِ رَهبَری</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">nah eenvari na oonvari, kiram tō beiteh rahbari</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Means 'neither this way nor that way, my dick in the Leader's office'. A nice little rhymey chant 
+                        that I've seen/heard from the recent Iranian protests in response to the Ayatollah's tyrannical governance over Iran,
+                        especially in response to the regime's extremely brutal crackdown/murdering of protestors. This phrase basically means 
+                        'fuck the Ayatollah/Khamenei'.
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script">موش بُخورَدِت</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">moosh bokhoradet</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">Literally means 'may a mouse eat you' (moosh=mouse, bokhoradet=may it eat you), and means 
+                        'you are cute', typically used for children.
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+              <!-- Funny things -->
+              <section class="section-block" aria-label="Funny things">
+                <h2 class="section-title">Funny Words</h2>
+
+                <ul class="entry-list">
+                  <li class="entry">
+                    <div>
+                      <div class="col-label">Farsi</div>
+                      <div class="fa-script"> کَلافِه</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Pronunciation</div>
+                      <div class="pron">kalāfeh</div>
+                    </div>
+                    <div>
+                      <div class="col-label">Meaning</div>
+                      <div class="meaning">This means that you are agitated or upset but for no particular reason. Persians 
+                        will know what you mean, and won't follow up with asking why you are upset.
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+  </main>
+</body>
+</html>

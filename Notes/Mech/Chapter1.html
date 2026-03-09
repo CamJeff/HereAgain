@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cam Jeffery | Example Blocks + Toggle</title>
+
+  <!-- Optional: keep if used elsewhere on your site -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+  
+  <!-- MathJax -->
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: { renderActions: { addMenu: [] } }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Shared styling (grid background, cards, buttons, footer) -->
+  <link rel="stylesheet" href="../notes.css" />
+
+  <style>
+    .page-hero-top{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Main card should NOT animate on hover */
+    .big-card,
+    .big-card:hover{
+      transform: none !important;
+      animation: none !important;
+      cursor: default;
+    }
+    .big-card::after,
+    .big-card:hover::after{
+      display: none !important;
+    }
+    .big-card .puzzle-card-inner{
+      display: block;
+      padding: 30px 28px;
+    }
+
+    /* Body text style for this page's narrative text */
+    .content-body{
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .content-body p{
+      margin: 0 0 14px;
+    }
+
+    .subheading{
+      margin: 18px 0 10px;
+      font-weight: 300;
+      font-size: 1.20rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .microheading{
+      margin: 14px 0 8px;
+      font-weight: 300;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      line-height: 1.35;
+    }
+
+    /* Colored blocks (sharp corners) */
+    .callout{
+      border: 1px solid rgba(18,35,62,0.12);
+      border-radius: 0; /* sharp corners */
+      padding: 14px 16px;
+      margin: 14px 0 18px;
+    }
+
+    .callout.gray{
+      background: #efefef;
+    }
+
+    .callout.green{
+      background: #e5e6ff !important;
+    }
+
+    .callout p{
+      margin: 0 0 10px;
+    }
+    .callout p:last-child{
+      margin-bottom: 0;
+    }
+
+
+    /* Solution toggle block */
+    .solution-wrap{
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .solution-hidden{
+      display: none;
+      border-top: 1px solid rgba(18,35,62,0.12);
+      padding-top: 10px;
+    }
+
+    /* Button that matches the site's aesthetic */
+    .toggle-btn{
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 10px 14px;
+      border: 1px solid var(--panel-line);
+      background: rgba(255,255,255,0.65);
+      box-shadow: 0 10px 26px rgba(12,29,58,0.07);
+      border-radius: 0; /* sharp corners */
+      cursor: pointer;
+
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      font: inherit;
+      color: var(--ink);
+    }
+
+
+    .toggle-btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(22,37,61,0.34);
+      box-shadow: 0 18px 40px rgba(12,29,58,0.12);
+    }
+
+    .toggle-btn .icon{
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    @media (max-width: 640px){
+      .big-card .puzzle-card-inner{ padding: 24px 18px; }
+      .callout{ padding: 12px 14px; }
+    }
+  </style>
+
+  <meta name="author" content="Cam Jeffery" />
+  <meta name="description" content="Example page with colored blocks and a show/hide solution toggle." />
+  <meta name="robots" content="index, follow" />
+</head>
+
+<body>
+  <main>
+
+    <header class="page-hero">
+      <div class="container narrow">
+
+        <div class="page-hero-top">
+          <a class="back-link" href="../../index.html" aria-label="Back to home">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Home
+          </a>
+
+          <a class="back-link" href="mech.html" aria-label="Back">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            Back
+          </a>
+        </div>
+
+        <div class="page-hero-title">
+          <h1>Chapter 1: Variational Calculus</h1>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="page-section">
+      <div class="container narrow">
+
+        <section class="puzzle-card big-card" aria-label="Main content card">
+          <div class="puzzle-card-inner">
+
+            <div class="content-body">
+              <h2 class="subheading">Euler-Lagrange Equation</h2>
+              <p>
+                Recall from Calculus I, we optimized functions by finding input values that give extremized output values. With variational calculus, now we optimize <b>functionals</b>  by finding input <b>functions</b> that give extremized output values. First let us define the following:
+              </p>
+
+              <div class="callout gray" aria-label="Gray block">
+                <ul>
+                    <li>A <b>function</b> takes an input <b>value</b> and returns an output value.</li>
+                    <li>A <b>functional</b> takes an input <b>function</b> and returns a output value.</li>
+                </ul>
+                $$\textbf{Function:}\;\;\;\text{Input}:\;x\;\rightarrow \;\text{Output:}\;f(x) $$
+$$\textbf{Functional:}\;\;\;\text{Input:}\;f(x)\;\rightarrow\;\text{Output:}\;F\left(y,x\right)$$
+
+                <p>In this class, we will try to work in optimizing the following:</p>
+
+                $$\boxed{I=\int_{x_1}^{x_2}F\left(y,\frac{dy}{dx},x\right)dx}$$
+              </div>
+
+              <p>But how to we optimize functionals? Recall for regular functions, in calculus I, we optimized a function $f(x)$ by finding the points where $f(x)$ is <em>stationary</em>, i.e where the derivative is zero: $f'(x)=0$. </p>
+
+
+              <div class="callout green" aria-label="Green block with solution reveal">
+                <div class="green-split">
+                    <!-- Left: text -->
+                    <div class="green-left">
+
+                      <br>
+                    <p>
+                        Find an input function $y=f(x)$ such that the functional:
+                    </p>
+
+                    <p>
+                        $$
+                        I=\int_{x_1}^{x_2}F(y,y',x)\,dx
+                        $$
+                    </p>
+
+                    <p><strong>Assumptions:</strong></p>
+
+                    <ul>
+                        <li>
+                        $y(x)$ is called the <em>extremal</em> function (as it makes $I$ stationary or extreme),
+                        and satisfies the boundary conditions: $y(x_1)=y_1$ and $y(x_2)=y_2$.
+                        </li>
+                        <li>
+                        All functions have continuous second derivatives.
+                        </li>
+                    </ul>
+                    </div>
+
+                    <!-- Right: image -->
+                    <div class="green-right">
+                    <img src="Pics/Plot.png" alt="Plot" class="green-plot" />
+                    </div>
+                </div>
+
+                <div class="solution-wrap">
+                  <button class="toggle-btn" type="button" id="toggleSolutionBtn" aria-expanded="false" aria-controls="solutionHidden">
+                    <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                    <span class="label">Show Solution</span>
+                  </button>
+
+                  <div class="solution-hidden" id="solutionHidden">
+                    <p>Let's introduce a function: $\eta(x)$, which satisfies:</p>
+
+                    $$\eta(x_1)=\eta(x_2)=0$$
+
+                    <p>Define another new function:</p>
+
+                    $$\bar{y}(x)=y(x)+\alpha\eta(x)$$
+
+                    <p>Here, $\bar{y}(x)$ represents any varied path we could take from point $A$ to point $B$. Notice that $\bar{y}$ satisfies the same boundary conditions as $y(x)$. The $\alpha$ is a constant, so this makes $\bar{y}$ a family of varied curves starting from $A$ and ending at $B$. Our goal is to find a particular $\bar{y}$ such that the $I$ integral is stationary. </p>
+
+                    <p>$\boxed{\textbf{Q}}\;$: What variable(s) is our integral $I$ a function of?</p>
+                    <p>$\boxed{\textbf{A}}\;$: $I(\alpha)$ is only a function of $\alpha$, since the $x$ variable is integrating out.</p>
+
+                    <p>Since $I$ depends only on $\alpha$, to make $I$ stationary, we optimize very similarly to regular calculus, we set:</p>
+
+                    $$\frac{dI}{d\alpha}\bigg|_{\alpha=0}=0$$
+
+                    <p>We notice that $I$ is stationary when $\alpha=0$, since we know that $y(x)$ represents our extremal function. So we have:</p>
+
+                    $$\frac{dI}{d\alpha}\bigg|_{\alpha=0}\int_{x_1}^{x_2}F(\bar{y},\bar{y}',x)dx=0$$
+                    $$\int_{x_1}^{x_2}\frac{\partial}{\partial\alpha}F(\bar{y},\bar{y}',x)\bigg|_{\alpha=0}dx=0$$
+
+                    <p>Applying the chain rule, while also noting $x$ is independent of $\alpha$ we get:</p>
+
+                    $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial\bar{y}}\cdot\frac{\partial\bar{y}}{\partial\alpha}+\frac{\partial F}{\partial \bar{y}'}\cdot\frac{\partial \bar{y}'}{\partial\alpha}\right]\bigg|_{\alpha=0}dx=0$$
+
+                    <p>Note the following:</p>
+
+                    $$\bar{y}(x)=y(x)+\alpha\eta(x)$$
+                    $$\bar{y}'(x)=y'(x)+\alpha\eta'(x)$$
+
+                    <p>With partial derivatives of:</p>
+
+                    $$\frac{\partial\bar{y}}{\partial\alpha}=\eta(x)$$
+                    $$\frac{\partial\bar{y}'}{\partial\alpha}=\eta'(x)$$
+
+                    <p>So we have that:</p>
+
+                    $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial \bar{y}}\eta(x)+\frac{\partial F}{\partial\bar{y}'}\eta'(x)\right]\bigg|_{\alpha=0}dx=0$$
+
+                    <p>To proceed, let's focus on the second term. Here, we can apply integration by parts:</p>
+
+                    $$\int udv=uv-\int vdu$$
+
+                    <p>With:</p>
+
+                    \begin{align*}
+                        u&=\frac{\partial F}{\partial\bar{y}'} &  dv&=\eta'(x)
+                        \\ du&=\frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}'}\right) &  v&=\eta(x)
+                    \end{align*}
+
+                    <p>So integrating the second term by parts we get:</p>
+
+                    $$\underbrace{\frac{\partial F}{\partial\bar{y}'}\eta(x)\bigg|_{x_1}^{x_2}}_{\text{Term 1}}-\int_{x_1}^{x_2}\frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}'}\right)\eta(x)dx$$
+
+                    <p>$\boxed{\textbf{Q}}\;$: What is the result of the Term 1 underbraced above?</p>
+                    <p>$\boxed{\textbf{A}}\;$: The first term is $0$ due to the conditions we set on $\eta$. $\eta$ acts as a sort of 'variation' parameter between each endpoint, but there is no variation at each endpoint.</p>
+
+                    <p>Plugging the above result back into our expression we get:</p>
+
+                    $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial\bar{y}}\eta(x)-\frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}'}\eta(x)\right)\right]\bigg|_{\alpha=0}dx=0$$
+                    $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial\bar{y}}-\frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}'}\right)\right]\eta(x)\bigg|_{\alpha=0}dx=0$$
+
+                    <p>When $\alpha=0$, $\bar{y}(x)=y(x)$ based on our definition for $\bar{y}(x)$, so we have:</p>
+
+                    $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)\right]\eta(x)dx=0$$
+
+                    <p>Since $\eta(x)$ is any arbitrary function, the only way for the above integral to be $0$ is if:</p>
+
+                    $$\boxed{\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)=0}$$
+
+                    <p>And just like that, we have derived the <b>Euler-Lagrange Equation</b>!</p>
+
+                    $$\square$$
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="callout gray" aria-label="Gray block">
+                <p>If a function $y(x)$ is an extremal function of $I$, then $y(x)$ must satisfy the <b>Euler-Lagrange Equation</b>:</p>
+
+                $$\boxed{\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)=0}$$
+
+                <p><b>Notes:</b></p>
+
+                <ul>
+                    <li>The Euler-Lagrange Equation is a necessary condition for the function $y(x)$ to give a stationary functional, it is <b>not</b> a sufficient condition.</li>
+                    <li>The Euler-Lagrange Equation only tells you the functions which make a functional stationary. It doesn't tell you about whether the functional becomes a maximum or a minimum. It doesn't tell you about the nature of the functions you determine. </li>
+                </ul>
+              </div>
+
+              <h2 class="subheading">Basic Application</h2>
+
+            <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Find a function passing through points $A$ and $B$ such that the distance between these points is as small as possible.</p>
+
+            <!-- Image below, centered -->
+            <div class="plot-container">
+                <img src="Pics/Plot.png" alt="Plot" class="green-plot2" />
+            </div>
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+                <p>An element of of length on the curve is:</p>
+
+                \begin{align*}
+                dS^2 & =dx^2+dy^2
+                \\ dS & =\sqrt{dx^2+dy^2}
+                \\ dS & =\sqrt{1+\left(\frac{dy}{dx}\right)^2}dx
+                \end{align*}
+
+                <p>From which the total length is:</p>
+
+                $$S=\int dS=\int _{x_1}^{x_2} \sqrt{1+\left(\frac{dy}{dx}\right)^2}dx$$
+
+                <p>We minimize using the Euler-Lagrange Equation. Here, $I=S$, and $F=\sqrt{1+\left(\frac{dy}{dx}\right)^2}$. Plugging in:</p>
+
+                $$\underbrace{\frac{\partial}{\partial y}\left(\sqrt{1+\left(\frac{dy}{dx}\right)^2}\right)}_{=0}-\frac{d}{dx}\frac{d}{dy'}\left(\sqrt{1+\left(\frac{dy}{dx}\right)^2}\right)$$
+
+                <p>Here, $y'=\frac{dy}{dx}$, so:</p>
+
+                $$-\frac{d}{dx}\frac{d}{dy'}\left(\sqrt{1+(y')^2}\right)$$
+                $$-\frac{d}{dx}\left(\frac{y'}{\sqrt{1+(y')^2}}\right)=0$$
+
+                <p>Since the derivative is 0, this implies that:</p>
+
+                $$\frac{y'}{\sqrt{1+(y')^2}}=\text{constant}=C$$
+                $$\frac{(y')^2}{1+(y')^2}=C^2$$
+                $$(y')^2=C^2+C^2(y')^2$$
+                $$(y')^2[1-C^2]=C^2$$
+                $$y'=\sqrt{\frac{C^2}{1-C^2}}=\text{constant}=a$$
+
+                <p>Solving for $y$:</p>
+
+                $$y'=\frac{dy}{dx}=a$$
+                $$\int dy=\int adx$$
+                $$\boxed{y=ax+b}$$
+
+                <p>This is the equation for a straight line. </p>
+
+
+
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+            <h2 class="subheading">Geodesics</h2>
+
+            <div class="callout gray" aria-label="Gray block">
+                <p>A <b>geodesic</b> is a path that minimizes the distance between two points on a surface.</p>
+
+                <p>For example, our last problem was finding the geodesic on a 2D plane. We found that the geodesic was just a straight line connecting each point. </p>
+              </div>
+
+
+                          <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Find the geodesic of a sphere of radius $R$. That is, find the path between points $A$ and $B$ on the sphere which minimizes the distance. </p>
+
+            <!-- Image below, centered -->
+            <div class="plot-container">
+                <img src="Pics/Sphere.png" alt="Plot" class="green-plot2" />
+            </div>
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+                <p>We are minimizing the distance, i.e:</p>
+
+                $$L=\int_A^BdS$$
+
+                <p>We know that:</p>
+
+                $$dS=\sqrt{dx^2+dy^2+dz^2}$$
+
+                <p>To proceed, we will work in spherical coordinates, recall:</p>
+
+                \begin{align*}
+                    x & = R \text{cos}\theta\text{sin}\phi
+                    \\ y & = R\text{sin}\theta\text{sin}\phi
+                    \\ z&=R\text{cos}\phi
+                \end{align*}
+
+                <p>Where:</p>
+
+                \begin{align*}
+                    R & = \text{radial distance}
+                    \\ \theta & = \text{angle from }+x-\text{axis}
+                    \\ \phi & = \text{angle from }+z-\text{axis}
+                \end{align*}
+
+                <p>By the chain rule:</p>
+
+                \begin{align*}
+                    dx & =\frac{\partial x}{\partial\theta}d\theta+\frac{\partial x}{\partial \phi}d\phi
+                    \\ dy & = \frac{\partial y}{\partial \theta}d\theta+\frac{\partial y}{\partial\phi}d\phi
+                    \\ dz& =\frac{\partial z}{\partial\theta}d\theta+\frac{\partial z}{\partial \phi}d\phi
+                \end{align*}
+
+                <p>Plugging in our expressions we get:</p>
+
+                \begin{align*}
+                    dx&=-R\text{sin}\theta\text{sin}\phi d\theta+R\text{cos}\theta\text{cos}\phi d\phi
+                    \\ dy & =R\text{cos}\theta\text{sin}\phi d\theta+R\text{sin}\theta\text{cos}\phi d\phi
+                    \\ dz &=-R\text{sin}\phi d\phi
+                \end{align*}
+
+                <p>We plug each of these into our expression for $dS$. After a lot of messy algebra and use of the identity $\text{sin}^2x+\text{cos}^2x=1$, we end up with:</p>
+
+                $$dS=Rd\phi\sqrt{\text{sin}^2\phi\left(\frac{d\theta}{d\phi}\right)^2+1}$$
+
+                <p>Plugging this into our expression for $L$:</p>
+
+                $$L=\int_{\phi_A}^{\phi_B}\underbrace{R\sqrt{\text{sin}^2\phi\left(\frac{d\theta}{d\phi}\right)^2+1}}_{F(\theta,\theta',\phi)}d\phi$$
+
+                <p>Where $\phi_A$ and $\phi_B$ are the angular coordinates of points $A$ and $B$. We have also identified our functional $F(\theta,\theta',\phi)$. So we can now use the Euler-Lagrange Equation:</p>
+
+                $$\frac{\partial F}{\partial \theta}-\frac{d}{d\phi}\left(\frac{\partial F}{\partial \theta'}\right)=0$$
+
+                <p>Notice our functional does not contain $\theta$, so the first partial derivative is 0. So we are left with:</p>
+
+                $$\frac{d}{d\phi}\left(\frac{\partial F}{\partial \theta'}\right)=0$$
+
+                <p>This implies that:</p>
+
+                $$\frac{\partial F}{\partial \theta'}=K$$
+
+                <p>For some constant $K$. However, we can also differentiate our functional $F$ with respect to $\theta'$ to get that:</p>
+
+                $$\frac{\partial F}{\partial\theta'}=\frac{\theta'\text{sin}^2\phi}{\sqrt{(\text{sin}^2\phi)(\theta')^2+1}}$$
+
+                <p>So we know that:</p>
+
+                $$\frac{\theta'\text{sin}^2\phi}{\sqrt{(\text{sin}^2\phi)(\theta')^2+1}}=K$$
+
+                <p>For some $K$ constant. We can then solve for $\theta'$.</p>
+
+                $$\frac{(\theta')^2\text{sin}^4\phi}{(\text{sin}^2\phi)(\theta')^2+1}=K^2$$
+                $$(\theta')^2\text{sin}^4\phi=K^2[(\text{sin}^2\phi)(\theta')^2+1]$$
+                $$(\theta')^2[\text{sin}^4\phi-K^2\text{sin}^2\phi]=K^2$$
+                $$(\theta')^2=\frac{K^2}{\text{sin}^4\phi-K^2\text{sin}^2\phi}$$
+                $$\theta'=\frac{d\theta}{d\phi}=\frac{K}{\text{sin}\phi\sqrt{\text{sin}^2\phi-K^2}}$$
+
+                <p>$\boxed{\textbf{Q}}\;$: What must be true about our constant $K$?</p>
+                <p>$\boxed{\textbf{A}}\;$: $K< 1$ for the square root to be real, since the derivative must also exist and be real. </p>
+
+                $$\theta=\int d\theta=\int \frac{K}{\text{sin}\phi\sqrt{\text{sin}^2\phi-K^2}} d\phi$$
+
+                <p>Use the substitution:</p>
+
+                \begin{align*}
+                    u & = K\text{cot}\phi
+                    \\ du & = -K\text{csc}^2\phi d\phi
+                \end{align*}
+
+                <p>This substitution works since the hypotenuse of this right-triangle is $\sqrt{u^2+K^2}$, which implies that:</p>
+
+                $$\text{sin}\phi=\frac{K}{\sqrt{u^2+K^2}}\Longrightarrow \text{sin}^2\phi=\frac{K^2}{u^2+K^2}$$
+
+                <p>Plugging these substitutions into our integral:</p>
+
+                $$\theta=-\int \frac{du}{\sqrt{1-K^2-u^2}}$$
+
+                <p>Note that $1-K^2$ is just another positive constant. Say that $1-K^2\equiv \alpha^2$, where $\alpha$ is some constant. </p>
+
+                $$\theta=-\int \frac{du}{\sqrt{\alpha^2-u^2}}$$
+
+                <p>We can use a trig substitution of $u=\text{cos}\psi$, but the answer to this integral is simply:</p>
+
+                $$\theta=\text{arccos}\left(\frac{u}{\alpha}\right)+\theta_0$$
+
+                <p>Re-substituting our initial variables:</p>
+
+                $$\theta-\theta_0=\text{arccos}\left(\frac{K\text{cot}\phi}{\alpha}\right)$$
+
+                <p>Since $\frac{K}{\alpha}$ is just some constant, we can combine them by letting $\beta\equiv\frac{K}{\alpha}$, so:</p>
+
+                $$\boxed{\theta-\theta_0=\text{arccos}(\beta\text{cot}\phi)}$$
+
+                <p>$\theta_0$ and $\beta$ are constants that can be determined by boundary conditions, i.e more information about points $A$ and $B$. </p>
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+            <p>We found the geodesic for a sphere above, but what does it mean? For a 2D plane, it was easy to see that the geodesic was simply a straight line, but what about here? Consider our sphere with a 2D plane that intersects our sphere and passes through the origin. The intersection of the sphere and the 2D plane will trace our a circle as shown below:</p>
+
+            <div class="plot-container">
+                <img src="Pics/Great.png" alt="Plot" class="green-plot2" />
+            </div>
+
+            <div class="callout gray" aria-label="Gray block">
+                <p>The circle above is known as the <b>Great Circle</b>. The great circle is simply the intersection of a sphere's surface and a plane passing through the sphere's center. </p>
+              </div>
+              
+                                        <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Find the equation of the great circle above.</p>
+
+
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+                <p>Recall the equation of a plane passing through the origin is:</p>
+
+                 $$Ax+By+Cz=0$$
+
+                 <p>The plane will intersect with points on the sphere, so we will proceed with spherical coordinates:</p>
+
+                     \begin{align*}
+                        x & = R \text{cos}\theta\text{sin}\phi
+                        \\ y & = R\text{sin}\theta\text{sin}\phi
+                        \\ z&=R\text{cos}\phi
+                    \end{align*}
+
+                    <p>Plugging this into the equation for our plane:</p>
+
+                    $$R \text{cos}\theta\text{sin}\phi+BR\text{sin}\theta\text{sin}\phi+CR\text{cos}\phi=0$$
+
+                    <p>The $R$ variable will cancel, and we can divide the equation by $\text{sin}\phi$ to get:</p>
+
+                    $$A\text{cos}\theta+B\text{sin}\theta=-C\text{cot}\phi$$
+
+                    <p>The left-hand side can be re-written using trig identities to obtain the following:</p>
+
+                    $$\sqrt{A^2+B^2}\text{cos}(\theta-\theta_0)=-C\text{cot}\phi$$
+
+                    <p>Where:</p>
+
+                    $$\theta_0=\text{arctan}\left(\frac BA\right)$$
+
+                    We can divide both sides by $\sqrt{A^2+B^2}$ and take the $\arccos$ of both sides to obtain:
+
+                    $$\boxed{\theta-\theta_0=\text{arccos}(\beta\text{cot}\phi)}$$
+
+                    <p>Where:</p>
+
+                    $$\beta=\frac{-C}{\sqrt{A^2+B^2}}$$
+
+                    <p>Notice this is exactly the same result we found from the geodesic of a sphere. What we can conclude that the geodesic of a sphere is simply an arc segment of the great circle. </p>
+
+                    <p>Thus, the shortest distance between two points on a sphere is the arc segment of the great circle passing through those points. </p>
+
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+            <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Find the shortest path on a cylinder of radius $\rho=1$ with a revolution axis $z$ between
+            the points $A(x,y,z)=(1,0,0)$ and $B(x,y,z)=(0,1,1)$. ou should use cylindrical coordinates $r=(\rho,\theta,z)$
+            and write down $ds^2$ in that set of coordinates, keeping in mind that $d\rho=0$.</p>
+
+            <!-- Image below, centered -->
+            <div class="plot-container">
+                <img src="Pics/Cyl.png" alt="Plot" class="green-plot2" />
+            </div>
+
+
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+                <p>Recall cylindrical coordinates we have:</p>
+
+                $$\begin{cases}
+                    x=\rho \text{cos}\theta \\ y=\rho \text{sin}\theta \\ z=z
+                \end{cases}\Longrightarrow \begin{cases}
+                    dx = -\rho\text{sin}\theta d\theta \\ dy= \rho\text{cos}\theta d\theta \\ dz=dz
+                \end{cases}$$
+
+                <p>So we want to minimize the distance between points $A$ and $B$, so:</p>
+
+                \begin{align*}
+                    S & = \int dS=\int_A^B\sqrt{x^2+y^2+z^2}
+                    \\ & = \int \sqrt{\rho^2\text{sin}^2\theta d\theta^2+\rho^2\text{cos}^2\theta d\theta^2+dz^2}
+                    \\ & =\int \sqrt{\rho^2 d\theta^2+dz^2}
+                    \\ & = \int \sqrt{d\theta^2\left(\rho^2+\left(\frac{dz}{d\theta}\right)^2\right)}
+                    \\ & = \int \underbrace{\sqrt{\rho^2+(z')^2}}_{F}d\theta
+                \end{align*}
+
+                <p>So we have our functional we want to minimize, so we can use the Euler-Lagrange Equation:</p>
+
+                $$\underbrace{\frac{\partial F}{\partial z}}_{=0}-\frac{\partial}{\partial \theta}\frac{\partial F}{\partial z'}=0$$
+
+                <p>The first term is 0, since our functional $F$ is independent of $z$. Plugging in:</p>
+
+                $$\frac{\partial}{\partial \theta}\left(\frac{z'}{\sqrt{\rho^2+(z')^2}}\right)=0$$
+
+                <p>The derivative goes to zero, which implies:</p>
+
+                $$\frac{z'}{\sqrt{\rho^2+(z')^2}}=C$$
+
+                <p>For some constant $C$. Solving for $z'$:</p>
+
+                $$\frac{(z')^2}{\rho^2+(z')^2}=C^2$$
+                $$(z')^2=C^2\rho^2+(z')^2C^2$$
+                $$(z')^2[1-C^2]=C^2\rho^2$$
+                $$\frac{dz}{d\theta}=\sqrt{\frac{C^2}{1-C^2}}\rho$$
+                $$\int dz=\int \sqrt{\frac{C^2}{1-C^2}}\rho d\theta$$
+                $$z=\sqrt{\frac{C^2}{1-C^2}}\rho \theta+D$$
+
+                <p>Here $\rho=1$. At point $A(x,y,z)=(1,0,0)$, this is on the $x-$axis, so $\theta=0$, and clearly, $z=0$ too. So:</p>
+
+                $$0=\sqrt{\frac{C^2}{1-C^2}}(0)+D$$
+                $$D=0$$
+
+                <p>At point $B(x,y,z)=(0,1,1)$, this is where $\theta=\frac{\pi}{2}$ and $z=1$, so:</p>
+
+                $$1=C'\left(\frac{\pi}{2}\right)\Longleftrightarrow C'=\frac{2}{\pi}$$
+
+                <p>Where we have simplified the constant $C'\equiv\sqrt{\frac{C^2}{1-C^2}}$. So our answer is:</p>
+
+                $$\boxed{z=\frac{2}{\pi}\theta}$$
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+            <h2 class="subheading">Beltrami Identity</h2>
+
+            <div class="callout gray" aria-label="Gray block">
+                <p>Recall the Euler-Lagrange Equation as:</p>
+                $$\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)=0$$
+
+                <p>There is a special case of this equation known as the <b>Beltrami Identity</b>. This applies when our functional $F(y,y',x)$ does not explicitly depend on variable $x$, i.e:</p>
+
+                $$\frac{\partial F}{\partial x}=0$$
+
+                <p>The Beltrami Identity is written as follows:</p>
+
+                $$\boxed{F-y'\frac{\partial F}{\partial y'}=C}$$
+
+                <p>Where $C$ is a constant that can be found from specifying boundary conditions. </p>
+
+
+              </div>
+
+
+             <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Derive the Beltrami Identity above, starting from the Euler-Lagrange Equation:</p>
+
+            $$\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)=0$$
+
+
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+
+                  <p>First, let's multiply both sides of the Euler-Lagrange Equation by $y'$. Call this equation \ref{eq:e}:</p>
+                
+                  
+
+                  $$\begin{align}
+                  y'\frac{\partial F}{\partial y}-y'\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)=0 \label{eq:e}
+                  \end{align}$$
+
+                  <p>We know that our functional is $F=F(y,y'x)$, where $y$ is also a function of $x$. We can compute its total derivative with respect to $x$ by the chain rule:</p>
+
+                  $$\frac{d F}{d x}=\frac{\partial F}{\partial x}+\frac{\partial F}{\partial y}y'+\frac{\partial F}{\partial y'}y''$$
+                  \begin{align}
+                      y'\frac{\partial F}{\partial y}= \frac{d F}{d x}-\frac{\partial F}{\partial x}-\frac{\partial F}{\partial y'}y''  \label{eq:f}
+                  \end{align}
+
+                  <p>Now we substitute equation \ref{eq:f} into equation \ref{eq:e} to obtain:</p>
+
+                  $$\frac{d F}{d x}-\frac{\partial F}{\partial x}-y''\frac{\partial F}{\partial y'}-y'\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)=0$$
+                  $$\frac{d F}{d x}-\frac{\partial F}{\partial x}-\left[y''\frac{\partial F}{\partial y'}+y'\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)\right]=0$$
+
+                  <p>Notice the expression in the brackets looks like the product rule. We can 'reverse' the product rule and write:</p>
+
+                  $$\frac{d F}{d x}-\frac{\partial F}{\partial x}-\frac{d}{dx}\left(y'\frac{\partial F}{\partial y'}\right)=0$$
+                  $$\frac{\partial F}{\partial x}=\frac{d F}{d x}-\frac{d}{dx}\left(y'\frac{\partial F}{\partial y'}\right)$$
+                  $$\frac{\partial F}{\partial x}=\frac{d}{dx}\left[F-y'\frac{\partial F}{\partial y'}\right]$$
+
+                  <p>As we mentioned earlier, if $F(y,y',x)$ has no explicit dependence on $x$, then the left-hand side of our above equation goes to 0. We are left with:</p>
+
+                  $$0=\frac{d}{dx}\left[F-y'\frac{\partial F}{\partial y'}\right]$$
+
+                  <p>Integrating both sides with respect to $x$:</p>
+
+                  $$\int 0dx=\int \frac{d}{dx}\left[F-y'\frac{\partial F}{\partial y'}\right]dx$$
+                $$\boxed{F-y'\frac{\partial F}{\partial y'}=C}$$
+
+                $$\square$$
+
+                  
+
+
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+            <h2 class="subheading">The Brachistochrone Problem</h2>
+
+            <p>How can we use variational calculus to solve physics problems? Consider the famous <b>Brachistochrone Problem</b>. Observe the graph below. </p>
+
+            <div class="plot-container">
+                <img src="Pics/Brach.png" alt="Plot" class="green-plot" />
+            </div>
+
+             <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Suppose I want to design a ski slope of height $h$ and length $L$ similar to the one above such that you travel down the slope in the <b>shortest</b> possible time. What shape will the ski slope take? Assume gravity $\vec{g}$ is pointing downwards. </p>
+
+            <p>What we're doing here is minizmizing the <b>time</b> it takes for a skier to travel from initial point $A(0,h)$ to final point $B(L,0)$, under a constant force field $\vec{g}$.</p>
+
+
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+
+                 <p>Our goal is to minimize the following with respect to a function $y=f(x)$:</p>
+
+                 $$T=\int_A^Bdt$$
+
+                 <p>We know that:</p>
+
+                 $$\text{Time}=\frac{\text{Distance}}{\text{Velocity}}$$
+                
+                 <p>So we have that:</p>
+
+                 $$dt=\frac{dS}{v(x,y)}$$
+
+                 <p>We saw in the previous example that:</p>
+
+                 $$dS=\sqrt{dx^2+dy^2}=\sqrt{1+\left(\frac{dy}{dx}\right)^2}dx$$
+
+                 <p>To find $v(x,y)$, we can use conservation of energy:</p>
+
+                 \begin{align*}
+                    mgh & =mgy+\frac 12 mv^2
+                    \\ v & =\sqrt{2g(h-y)}
+                \end{align*}
+
+                <p>So our functional becomes:</p>
+
+                \begin{align*}
+                    T & =\int_0^L\underbrace{\sqrt{\frac{1+(y')^2}{2g(h-y)}}}_{F(y,y',x)}dx
+                \end{align*}
+
+                <p>We noticed that the above $F(y,y',x)$ does not depend on variable $x$, so we can use Beltrami's Identity:</p>
+
+                $$F-y'\frac{\partial F}{\partial y'}=C$$
+
+                <p>Plugging in our functional into the identity:</p>
+
+                $$\sqrt{\frac{1+(y')^2}{2g(h-y)}}-\frac{(y')^2}{\sqrt{(1+(y')^2)(2g(h-y))}}=C$$
+                $$1+(y')^2-(y')^2=C\sqrt{(1+(y')^2)(2g(h-y))}$$
+                $$1=C\sqrt{(1+(y')^2)(2g(h-y))}$$
+                $$1=C^2(1+(y')^2)(2g)(h-y))$$
+                $$C_1=(1+(y')^2)(h-y)$$
+
+                <p>Where:</p>
+
+                $$C_1=\frac{1}{2gC^2}$$
+
+                <p>So we have:</p>
+
+                $$C_1=(h-y)+(y')^2(h-y)$$
+                $$(y')^2(h-y)=C_1-(h-y)$$
+                $$(y')^2=\frac{C_1-(h-y))}{h-y}$$
+                $$y'=\frac{dy}{dx}=\sqrt{\frac{C_1-(h-y))}{h-y}}$$
+                $$\int dx=\int\sqrt{\frac{h-y}{C_1-(h-y)}} dy $$
+
+                <p>Let's make the following substitution:</p>
+
+                \begin{align*}
+                    y & = h-C_1\text{sin}^2\left(\frac{\theta}{2}\right)
+                    \\ dy & = -C_1\text{sin}\left(\frac{\theta}{2}\right)\text{cos}\left(\frac{\theta}{2}\right)d\theta
+                \end{align*}
+
+                <p>Plugging into our integral:</p>
+
+                $$x=\int \sqrt{\frac{C_1\text{sin}^2\left(\frac{\theta}{2}\right)}{C_1-C_1\text{sin}^2\left(\frac{\theta}{2}\right)}}\left(-C_1\text{sin}\left(\frac{\theta}{2}\right)\text{cos}\left(\frac{\theta}{2}\right)\right)d\theta$$
+                $$x=-C_1\int \frac{\text{sin}\left(\frac{\theta}{2}\right)}{\text{cos}\left(\frac{\theta}{2}\right)}\text{sin}\left(\frac{\theta}{2}\right)\text{cos}\left(\frac{\theta}{2}\right)d\theta$$
+                $$x=-C_1\int \text{sin}^2\left(\frac{\theta}{2}\right)d\theta$$
+                $$x=-\frac{C_1}{2}\int (1-\text{cos}\theta)d\theta$$
+
+                <p>If we let $-C_1=K_1$ (some constant), we get:</p>
+
+                $$x=\frac{K_1}{2}(\theta-\text{sin}\theta)+K_2$$
+
+                <p>Using the identity $\text{sin}^2\left(\frac{\theta}{2}\right)=\frac 12 (1-\text{cos}\theta)$ for the $y$ equation, we get our solution in the form of the parametric equations:</p>
+
+                $$\boxed{\begin{cases}
+                x=\frac{K_1}{2}(\theta-\text{sin}\theta)+K_2
+                \\ y=h+\frac{K_1}{2}(1-\text{cos}\theta)
+                \end{cases}}$$
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+            <p>How can we interpret our answer from the brachistochrone problem? What shape do these parametric equations form? The parametric equations form a <b>cycloid</b>.</p>
+
+            <div class="callout gray" aria-label="Gray block">
+                <p>A <b>cycloid</b> is the curve generated by a point on the circumference of a circle that rolls along a straight line.</p>
+
+                <p>Let $r$ be the radius of the circle, and $\theta$ be the angular displacement of the circle. Then the parametric equations in polar form are:</p>
+
+                $$\begin{cases}
+                    x=r(\theta-\text{sin}\theta)
+                    \\ y=r(1-\text{cos}\theta)
+                \end{cases}$$
+              </div>
+
+              <p>A pictorial representation of a cycloid curve be traced out is shown below. </p>
+
+              <div class="plot-container">
+                <img src="Pics/Cyc.png" alt="Plot" class="green-plot3" />
+            </div>
+
+            <h2 class="subheading">Multiple Dependent Variables</h2>
+
+            <p>So far we have derive the Euler Lagrange Equation that optimizes a functional of the form:</p>
+
+            $$F=F(y,y',x)$$
+
+            <p>The question that naturally arises is how we can generalize the Euler-Lagrange Equation for <b><em>any</em></b> functional of the form:</p>
+
+            $$F=F\left(y_1,y_1',y_2,y_2',\dots,y_n,y_n',x\right)$$
+
+            <p>This is going to be our next step:</p>
+
+
+                                                                             <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+              <p>Derive an equation that gives stationary functions of the functional $I$ below:</p>
+
+              $$I=\int_{x_1}^{x_2}F\left(y_1,y_1',y_2,y_2',\dots,y_n,y_n',x\right)$$
+
+              <p>Note these functions must obey the boundary conditions:</p>
+
+              $$y_i(x_1)=y_{i1}\;\;\;\text{and }\;\;y_i(x_2)=y_{i2},\;\;\;\text{for }\;\;i=1,\dots,n$$
+
+              <p>Where the functions $y_i$ make $I$ stationary. </p>
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+
+                 <p>Similarly to our proof of the Euler-Lagrange Equation, let us introduce a function $\eta_i(x)$ that satisfies:</p>
+
+                 $$\eta_i(x_1)=\eta(x_2)$$
+                 
+                 <p>Similarly, we define a function $\bar{y}_i(x)$ that represents a varied path from $x_1$ to $x_2$ defined as:</p>
+
+                 $$\bar{y}(x)=y_i(x)+\alpha_i\eta_i(x)$$
+
+                 <p>Where $\alpha_i$ is a constant. Notice $\bar{y}(x)$ satisfies the same boundary conditions as $y(x)$. Our goal is to find the particular $\bar{y}(x)$ that makes $I$ stationary. </p>
+
+                 <p>To do this, we notice that $I$ is only a function of $\alpha_i$, $I(\alpha_i)$, since all the $x$ terms from $x$ and $y_i(x)$ and their derivatives get integrated out. So to make $I$ stationary, we set:</p>
+
+                 $$\frac{dI}{d\alpha_i}\bigg|_{\alpha_i=0}=0$$
+
+                 <p>So we have:</p>
+
+                 $$\frac{d}{d\alpha_i}\bigg|_{\alpha_i=0}\int_{x_1}^{x_2}F\left(\bar{y}_1,\bar{y}_1'\dots,\bar{y}_i,\bar{y}_i',\dots,\bar{y}_n,\bar{y}_n',x\right)dx=0$$
+                  $$\int_{x_1}^{x_2}\frac{\partial}{\partial\alpha_i}\bigg|_{\alpha_i=0}F\left(\bar{y}_1,\bar{y}_1'\dots,\bar{y}_i,\bar{y}_i',\dots,\bar{y}_n,\bar{y}_n',x\right)dx=0$$
+
+                <p>$\boxed{\textbf{Q}}\;$: What are the only terms of our functional $F$ that survive when we take the partial.</p>
+                <p>$\boxed{\textbf{A}}\;$: It is only the $\bar{y}_i$ and $\bar{y}_i'$ term that depend on $\alpha_i$, o all other terms differentiate to $0$.</p>
+
+                $$\int_{x_1}^{x_2}\left(\frac{\partial F}{\partial\bar{y}_i}\cdot\frac{\partial \bar{y}_i}{\partial\alpha_i}+\frac{\partial F}{\partial\bar{y}_i'}\cdot\frac{\partial \bar{y}_i'}{\partial\alpha_i}\right)dx\bigg|_{\alpha_i=0}=0$$
+
+                <p>We know that $\bar{y}_i(x)=y_i(x)+\alpha_i\eta_i(x)$, so we have that:</p>
+
+                $$\frac{\partial\bar{y}_i}{\partial\alpha_i}=\eta_i\;\;\;\text{and }\;\;\frac{\partial\bar{y}_i}{\partial\alpha_i}=\eta_i'$$
+
+                <p>So we have:</p>
+
+                $$\int_{x_1}^{x_2}\left(\frac{\partial F}{\partial\bar{y}_i}\eta_i+\frac{\partial F}{\partial\bar{y}_i'}\eta_i'\right)dx\bigg|_{\alpha_i=0}=0$$
+
+                <p>As before, we can take the second term and integrate by parts. The result of this is:</p>
+
+                $$\left[\int_{x_1}^{x_2}\frac{\partial F}{\partial\bar{y}_i}\eta_idx+\frac{\partial F}{\partial\bar{y}_i}\left[\eta_i\right]\bigg|_{x_1}^{x_2}-\int_{x_1}^{x_2}\eta_i\frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}_i'}\right)dx\right]_{\alpha_i}=0$$
+
+                <p>From the boundary conditions, we know $\eta(x_1)=\eta(x_2)$, so the second term goes to 0. We're left with:</p>
+
+                $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial\bar{y}_i}\eta_i-\eta_i \frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}_i'}\right)\right]dx\bigg|_{\alpha_i=0}=0$$
+                $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial\bar{y}_i}-\frac{d}{dx}\left(\frac{\partial F}{\partial\bar{y}_i'}\right)\right]\eta_idx\bigg|_{\alpha_i=0}=0$$
+
+                <p>At $\alpha_i=0$ we have:</p>
+
+                $$\int_{x_1}^{x_2}\left[\frac{\partial F}{\partial y_i}-\frac{d}{dx}\left(\frac{\partial F}{\partial y_i'}\right)\right]\eta_idx=0$$
+
+                <p>Since $\eta_i$ is just some function, the only way for this integral to be 0 is if the integrand is 0, i.e:</p>
+
+                $$\boxed{\frac{\partial F}{\partial y_i}-\frac{d}{dx}\left(\frac{\partial F}{\partial y_i'}\right)=0}$$
+
+                <p>Looks familiar, so what is the actual difference here between our regular functional $F(y,y',x)$? </p>
+
+                <p>Well, in order to determine the $y$'s that make $I$ stationary, instead of solving just one Euler-Lagrange equation to find a single function that makes $I$ stationary, we have to solve $n$ Euler-Lagrange equations to find the <em>combination</em> of $n$ functions which make $I$ stationary, where there is one Euler-Lagrange equation for each dependent variable $y_i$.</p>
+
+                <p>This means we'll have an Euler-Lagrange equation for $y_1$, and another Euler-Lagrange equation for $y_2$, and so for $y_n$. Solving all these Euler-Lagrange equations gives the stationary set of functions that makes $I$ stationary. </p>
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+                          <h2 class="subheading">Constrained Variation</h2>
+
+              <p>Suppose we now have your typical functional as below:</p>
+
+              $$I=\int_{x_1}^{x_2}F(y,y',x)dx$$
+
+              <p>Suppose our goal is again to find a function $y$ such that $I$ above is stationary. Normally, we would just use the Euler-Lagrange Equation. However, suppose now there is an additional condition on our function $y$, namely:</p>
+
+              $$J=\int_{x_1}^{x_2}G(y,y',x)$$
+
+              <p>Where $J$ is some particular constant. Here is an example of wanting to optimize something with a constraint. The typical move from here is to use the method of <b>Lagrange Multipliers</b>.</p>
+
+
+                                                                                           <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+              <p>Consider our typical functional below:</p>
+
+            $$I=\int_{x_1}^{x_2}F(y,y',x)dx$$
+
+            <p>We want to find a function $y$ which makes the functional $I$ stationary, subject to the condition:</p>
+
+            $$J=\int_{x_1}^{x_2}G(y,y',x)$$
+
+            <p>Where $J$ must be a constant for a particular fixed value. Derive an Euler-Lagrange Equation for this.</p>
+
+
+
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+
+                <p>To proceed with Lagrange Multipliers, we construct a new functional $K$ defined as:</p>
+
+                $$K=I+\lambda J$$
+
+                <p>Where $\lambda$ is the Lagrange Multiplier, and is an unknown constant. So we have:</p>
+
+              $$K=\int_{x_1}^{x_2}F(y,y',x)dx+\lambda \int_{x_1}^{x_2}G(y,y',x)dx$$
+              $$K=\int_{x_1}^{x_2}F(y,y',x)+\lambda G(y,y',x)dx$$
+
+              <p>We can then apply the Euler-Lagrange Equation to this to get:</p>
+
+              $$\frac{\partial}{\partial y}(F+\lambda G)-\frac{d}{dx}\left[\frac{\partial}{\partial y'}(F+\lambda G)\right]=0$$
+              $$\boxed{\frac{\partial F}{\partial y}-\frac{d}{dx}\left(\frac{\partial F}{\partial y'}\right)+\lambda\left[\frac{\partial G}{\partial y}-\frac{d}{dx}\left(\frac{\partial G}{\partial y'}\right)\right]=0}$$
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+          <h2 class="subheading">Isoperimetric Problems</h2>
+
+          <div class="callout green" aria-label="Green block with solution reveal">
+                <div class="green-split">
+                    <!-- Left: text -->
+                    <div class="green-left">
+
+               <!-- Add blank space here  -->
+                <br><br><br>
+
+                  <p>Suppose a line of length $L$ is supported at points $A$ and $B$, with $L>d_{AB}$. What shape, $y=f(x)$, should we draw the line such that the area under $y=f(x)$ is maximized?</p>
+
+                  <p><b>Note:</b> We take $L>d_{AB}$ since if $L=d_{AB}$, then $y=f(x)$ would just be a straight line, as we have seen in a previous problem. </p>
+
+
+
+
+                    </div>
+
+                    <!-- Right: image -->
+                    <div class="green-right">
+                    <img src="Pics/Plott.png" alt="Plot" class="green-plot" />
+                    </div>
+                </div>
+
+                <div class="solution-wrap">
+                  <button class="toggle-btn" type="button" id="toggleSolutionBtn" aria-expanded="false" aria-controls="solutionHidden">
+                    <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                    <span class="label">Show Solution</span>
+                  </button>
+
+                  <div class="solution-hidden" id="solutionHidden">
+                   
+                <p>Our goal is to maximize the area under the curve, $\alpha$, i.e the integral:</p>
+
+                $$I=\alpha=\int_{x_A}^{x_B}\underbrace{y}_{F}dx$$
+
+                <p>But now it is subject to the constraint that $y$ must have length $L$, or in other terms:</p>
+
+                $$J=L=\int_{x_A}^{x_B}\underbrace{\sqrt{1+(y')^2}}_{G}dx$$
+
+                <p>We proceed by method of Lagrange Multipliers, writing that:</p>
+
+                $$K=I+\lambda J$$
+
+                <p>Where $\lambda$ is a Lagrange multiplier. Then:</p>
+
+                \begin{align*}
+                    K & = \int_{x_A}^{x_B}ydx+\lambda\int_{x_A}^{x_B}\sqrt{1+(y')^2}dx
+                    \\ & =\int_{x_A}^{x_B}\left(y+\lambda\sqrt{1+(y')^2}\right)dx
+                \end{align*}
+
+                <p>Now we apply the Euler Lagrange Equation to the above integrand, i.e $F+\lambda G$. </p>
+
+                $$\frac{\partial}{\partial y}(F+\lambda G)-\frac{d}{dx}\left[\frac{\partial}{\partial y'}(F+\lambda G)\right]=0$$
+                $$1-\frac{d}{dx}\left[\frac{\lambda}{2\sqrt{1+(y')^2}}\cdot 2y'\right]=0$$
+                $$\int 1dx=\int \frac{d}{dx}\left[\frac{\lambda y'}{\sqrt{1+(y')^2}}\right]$$
+                $$x+C_1=\frac{\lambda y'}{\sqrt{1+(y')^2}}$$
+                $$(x+C_1)^2=\frac{\lambda^2(y')^2}{1+(y')^2}$$
+                $$(x+C_1)^2+(y')^2(x+C_1)^2=\lambda^2(y')^2$$
+                $$(x+C_1)^2=[\lambda^2-(x+C_1)^2](y')^2$$
+                $$\frac{dy}{dx}=\frac{x+C_1}{\sqrt{\lambda^2-(x+C_1)^2}}$$
+                $$\int dy=\int \frac{x+C_1}{\sqrt{\lambda^2-(x+C_1)^2}}dx$$
+
+                <p>Make the substitution $u=x+C_1$ and $du=dx$. We then have:</p>
+
+                $$y=\int \frac{u}{\sqrt{\lambda^2-u^2}}du$$
+
+                <p>Now let $v=\lambda^2-u^2$, then $dv=-2udu$, or $du=-\frac{dv}{2u}$. So we have:</p>
+
+
+                \begin{align*}
+                  y & = \int \frac{-udv}{2u\sqrt{v}}
+                  \\ & = -\frac 12 \int \frac{dv}{\sqrt{v}}
+                  \\ & = -\frac 12 \cdot 2\sqrt{v}+C_2'
+                  \\ & = -\sqrt{\lambda^2-u^2}+C_2'
+                  \\ & = -\sqrt{\lambda^2-(x+C_1)^2}+C_2'
+              \end{align*}
+
+
+              <p>If we let $C_2\equiv -C_2'$, we end up with:</p>
+
+              $$y+C_2=-\sqrt{\lambda^2-(x+C_1)^2}$$
+              $$\boxed{(x+C_1)^2+(y+C_2)^2=\lambda^2}$$
+
+              <p>We can see that this is an equation for a circle of radius $\lambda$, centered at $(-C_1,-C_2)$. </p>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+            <!-- ADDED: second problem block under "Basic Application" -->
+            <div class="callout green" aria-label="Green block with solution reveal (basic application)">
+
+            <p>Using the general solution obtained in the last problem, find the values of constants $C_1$, $C_2$, and $\lambda$, if we take that points $A=(-\sqrt{3},0)$, $B=(\sqrt{3},0)$, and the function has length of $L=\frac{4\pi}{3}$</p>
+
+            <div class="solution-wrap">
+                <button class="toggle-btn" type="button" aria-expanded="false">
+                <span class="icon" aria-hidden="true"><i class="fa fa-angle-down"></i></span>
+                <span class="label">Show Solution</span>
+                </button>
+
+                <div class="solution-hidden">
+
+                <p>We have our solution as:</p>
+
+                $$(x+C_1)^2+(y+C_2)^2=\lambda^2$$
+
+                <p>Plugging each point into the equation above gives:</p>
+
+                \begin{align}
+                    (C_1-\sqrt{3})^2+C_2^2=\lambda^2 \label{eq:y}
+                \end{align}
+                 \begin{align}
+                  (C_1+\sqrt{3})^2+C_2^2=\lambda^2 \label{eq:z}
+                \end{align}
+
+
+                <p>Equating \ref{eq:y} and \ref{eq:z} together:</p>
+
+
+                $$(C_1-\sqrt{3})^2+C_2^2=(C_1+\sqrt{3})^2+C_2^2$$
+                $$(C_1-\sqrt{3})^2=(C_1+\sqrt{3})^2$$
+                $$\boxed{C_1=0}$$
+
+                <p>We can now plug $C_1=0$ into equation \ref{eq:z} to get:</p>
+
+
+                \begin{align}
+                  C_2^2=\lambda^2-3  \label{eq:x}
+                \end{align}
+
+                <p>We can then use the constraint equation:</p>
+
+                $$L=\int_{x_A}^{x_B}\sqrt{1+(y')^2}dx=\int_{-\sqrt{3}}^{\sqrt{3}}\sqrt{1+(y')^2}dx$$
+
+
+                <p> Noting from the last problem, we have that:</p>
+
+                $$y'=\frac{dy}{dx}=\frac{x+C_1}{\sqrt{\lambda^2-(x+C_1)^2}}=\frac{x}{\sqrt{\lambda^2-x^2}}$$
+
+                <p>So:</p>
+
+
+                $$L=\int_{-\sqrt{3}}^{\sqrt{3}}\sqrt{1+\frac{x^2}{\lambda^2-x^2}}dx=\int_{-\sqrt{3}}^{\sqrt{3}}\frac{\lambda}{\sqrt{\lambda^2-x^2}}dx$$
+
+
+                <p>Now we use the trig substitution of $x=\lambda\text{sin}\theta$ and $dx=\lambda\text{cos}\theta$, we get:</p>
+
+                \begin{align*}
+                    L & = \int \frac{\lambda^2\text{cos}\theta}{\sqrt{\lambda^2-\lambda^2\text{sin}^2\theta}}d\theta
+                    \\ & =\int \lambda d\theta \\
+                        & =\lambda \theta
+                    \\ & = \lambda\text{arcsin}\left(\frac{x}{\lambda}\right)\bigg|_{-\sqrt{3}}^{\sqrt{3}}
+                    \\ & = \lambda\left[\text{arcsin}\left(\frac{\sqrt{3}}{\lambda}\right)-\text{arcsin}\left(-\frac{\sqrt{3}}{\lambda}\right)\right]
+                \end{align*}
+
+
+              <p>Now since we have $L=\frac{4\pi}{3}$, we have:</p>
+
+              $$\frac{4\pi}{3}=\lambda\left[\text{arcsin}\left(\frac{\sqrt{3}}{\lambda}\right)-\text{arcsin}\left(-\frac{\sqrt{3}}{\lambda}\right)\right]$$
+
+
+              <p>Now, obviously this is hard to analytically solve. But if we note that:</p>
+
+
+              $$\text{sin}\left(\frac{\pi}{3}\right)=\frac{\sqrt{3}}{2}\Longleftrightarrow \text{arcsin}\left(\frac{\sqrt{3}}{2}\right)=\frac{\pi}{3}$$
+
+              <p>We should be able to convince ourselves that:</p>
+
+              $$\boxed{\lambda=2}$$
+
+              <p>Plugging this into equation \ref{eq:x}, we get:</p>
+
+              \begin{align*}
+                  C_2^2 &= \lambda^2-3
+                  \\ & =4-3
+                \\ C_2 & = \pm 1
+              \end{align*}
+
+
+              <p>Take $C_2=1$, so we get that our equation is:</p>
+
+              $$\boxed{x^2+(y+1)^2=4}$$
+
+              <p>$\boxed{\textbf{Q}}\;$: Could we have used the Beltrami Identity to solve this isoperimetric problem?</p>
+              <p>$\boxed{\textbf{A}}\;$: Yes, since our functional had no explicit dependence on $x$. However, using the Euler-Lagrange equation is actually simpler, in this case.</p>
+
+                </div>
+            </div>
+            </div>
+            <!-- END ADDED BLOCK -->
+
+
+
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © <span id="y"></span> Cam Jeffery
+    </footer>
+
+
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+
+      // Toggle solution regions (supports multiple copied blocks)
+      document.querySelectorAll('.solution-wrap').forEach((wrap) => {
+        const btn = wrap.querySelector('.toggle-btn');
+        const hidden = wrap.querySelector('.solution-hidden');
+        if (!btn || !hidden) return;
+
+        const label = btn.querySelector('.label');
+        const icon = btn.querySelector('.icon i');
+
+        btn.addEventListener('click', () => {
+          const isOpen = hidden.style.display === 'block';
+          if (isOpen) {
+            hidden.style.display = 'none';
+            if (label) label.textContent = 'Show Solution';
+            btn.setAttribute('aria-expanded', 'false');
+            if (icon) icon.className = 'fa fa-angle-down';
+          } else {
+            hidden.style.display = 'block';
+            if (label) label.textContent = 'Hide Solution';
+            btn.setAttribute('aria-expanded', 'true');
+            if (icon) icon.className = 'fa fa-angle-up';
+
+            if (window.MathJax) MathJax.typesetPromise([hidden]);
+          }
+        });
+      });
+    </script>
+
+
+
+  </main>
+</body>
+</html>
